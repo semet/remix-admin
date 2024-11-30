@@ -139,3 +139,22 @@ function handleBrowserRequest(
     setTimeout(abort, ABORT_DELAY)
   })
 }
+
+process.on('unhandledRejection', (reason: unknown, p: Promise<unknown>) => {
+  let stack = ''
+
+  if (reason instanceof Error && reason.stack) {
+    stack = reason.stack
+  } else if (typeof reason === 'string') {
+    stack = reason
+  } else {
+    try {
+      stack = JSON.stringify(reason)
+    } catch {
+      stack = '[Unable to serialize reason]'
+    }
+  }
+
+  // eslint-disable-next-line no-console
+  console.error('Unhandled Promise Rejection', { reason, stack, promise: p })
+})
