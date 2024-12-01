@@ -1,10 +1,17 @@
 import { Outlet } from '@remix-run/react'
 
+import { Content, Header, Sidebar } from '~/layouts/dashboard'
+
 const DashboardLayout = () => {
   return (
-    <div>
-      DashboardLayout
-      <Outlet />
+    <div className="flex h-screen">
+      <Sidebar />
+      <div className="flex flex-1 flex-col">
+        <Header />
+        <Content>
+          <Outlet />
+        </Content>
+      </div>
     </div>
   )
 }
