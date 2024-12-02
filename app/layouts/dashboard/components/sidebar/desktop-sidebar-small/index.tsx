@@ -37,7 +37,6 @@ export const DesktopSidebarSmall: FC<Props> = ({
             ])}
           >
             <Icon className="text-lg" />
-            <span className="hidden text-sm lg:inline-block">{name}</span>
           </PopoverButton>
           <AnimatePresence>
             {open && (

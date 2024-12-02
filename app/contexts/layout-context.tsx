@@ -5,8 +5,10 @@ import {
   PropsWithChildren,
   SetStateAction,
   useContext,
+  useEffect,
   useState
 } from 'react'
+import { useWindowSize } from 'usehooks-ts'
 
 type LayoutContextType = {
   sidebarExpanded: boolean
@@ -17,11 +19,22 @@ type LayoutContextType = {
 const LayoutContext = createContext<LayoutContextType | undefined>(undefined)
 
 const LayoutProvider: FC<PropsWithChildren> = ({ children }) => {
+  const { width } = useWindowSize()
+
   const [sidebarExpanded, setSidebarExpanded] = useState<boolean>(true)
 
   const toggleSidebar = () => {
     setSidebarExpanded((prev) => !prev)
   }
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (width && width < 1024) {
+      setSidebarExpanded(false)
+    } else {
+      setSidebarExpanded(true)
+    }
+  }, [width])
 
   const values = {
     sidebarExpanded,

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useResizeObserver } from 'usehooks-ts'
 
+import { useLayout } from '~/contexts'
 import {
   DesktopSidebarLarge,
   DesktopSidebarSmall,
@@ -13,6 +14,7 @@ import {
 export const SidebarContent = () => {
   const [activeTab, setActiveTab] = useState<number | null>(null)
   const { pathname } = useLocation()
+  const { sidebarExpanded } = useLayout()
   const ref = useRef<HTMLDivElement>(null)
   const { width } = useResizeObserver({
     ref
@@ -46,18 +48,24 @@ export const SidebarContent = () => {
                     to={href}
                     onClick={() => setActiveTab(null)}
                     className={twMerge([
-                      'flex items-start justify-center gap-2 text-slate-300 hover:text-white lg:justify-start',
+                      'flex items-start gap-2 text-slate-300 hover:text-white',
+                      sidebarExpanded ? 'justify-start' : 'justify-center',
                       pathname === href && 'text-white'
                     ])}
                   >
                     <Icon className="text-lg" />
-                    <span className="hidden text-sm lg:inline-block">
+                    <span
+                      className={twMerge([
+                        'text-sm',
+                        sidebarExpanded ? 'inline-block' : 'hidden'
+                      ])}
+                    >
                       {name}
                     </span>
                   </Link>
                 ) : (
                   <>
-                    {width > 38 ? (
+                    {sidebarExpanded ? (
                       <DesktopSidebarLarge
                         activeTab={activeTab}
                         icon={Icon}

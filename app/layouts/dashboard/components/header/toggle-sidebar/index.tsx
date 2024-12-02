@@ -21,7 +21,7 @@ export const ToggleSidebar = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ type: 'spring', bounce: 0 }}
           >
-            <CgChevronDoubleRight size={24} />
+            <CgMenuLeft size={24} />
           </motion.div>
         ) : (
           <motion.div
@@ -30,7 +30,7 @@ export const ToggleSidebar = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ type: 'spring', bounce: 0 }}
           >
-            <CgMenuLeft size={24} />
+            <CgChevronDoubleRight size={24} />
           </motion.div>
         )}
       </AnimatePresence>
