@@ -13,7 +13,7 @@ export const Sidebar = () => {
       animate={{ width: sidebarExpanded ? 250 : 70, transformOrigin: 'left' }}
       transition={{ type: 'spring', bounce: 0 }}
       className={twMerge([
-        'sticky top-0 hidden h-screen w-full bg-primary text-white md:block'
+        'sticky bottom-10 top-0 hidden w-full bg-primary text-white md:block'
       ])}
     >
       <Logo />

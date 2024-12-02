@@ -1,170 +1,256 @@
 import { IconType } from 'react-icons'
 import {
-  IoHomeOutline,
-  IoSettingsOutline,
-  IoPersonOutline,
-  IoCartOutline,
-  IoChatbubbleOutline,
-  IoLogOutOutline
-} from 'react-icons/io5'
+  RiAlignTop,
+  RiBookReadLine,
+  RiDashboard2Line,
+  RiFileList3Line,
+  RiLayoutGridLine,
+  RiPagesLine,
+  RiPencilRuler2Line,
+  RiPieChart2Line,
+  RiQuestionnaireLine
+} from 'react-icons/ri'
 
 export type Menu = {
   id: number
   name: string
   icon: IconType
   href?: string
-  children?: Required<Omit<Menu, 'children'>>[]
+  children?: Required<Omit<Menu, 'children' | 'icon'>>[]
 }
 
 export const menus: Menu[] = [
   {
     id: 1,
     name: 'Dashboard',
-    icon: IoHomeOutline,
+    icon: RiDashboard2Line,
     href: '/dashboard'
   },
   {
     id: 2,
-    name: 'Profile',
-    icon: IoPersonOutline,
+    name: 'Base UI',
+    icon: RiPencilRuler2Line,
     children: [
       {
-        id: 1,
-        name: 'View Profile',
-        icon: IoPersonOutline,
-        href: '/dashboard/profile'
+        id: 3,
+        name: 'Alerts',
+        href: '/base-ui/alerts'
       },
       {
-        id: 2,
-        name: 'Edit Profile',
-        icon: IoPersonOutline,
-        href: '/dashboard/edit'
-      }
-    ]
-  },
-  {
-    id: 3,
-    name: 'Settings',
-    icon: IoSettingsOutline,
-    children: [
-      {
-        id: 1,
-        name: 'Account',
-        icon: IoSettingsOutline,
-        href: '/dashboard/settings/account'
+        id: 4,
+        name: 'Buttons',
+        href: '/base-ui/buttons'
       },
       {
-        id: 2,
-        name: 'Privacy',
-        icon: IoSettingsOutline,
-        href: '/dashboard/settings/privacy'
-      }
-    ]
-  },
-  {
-    id: 4,
-    name: 'Orders',
-    icon: IoCartOutline,
-    children: [
-      {
-        id: 1,
-        name: 'Current Orders',
-        icon: IoCartOutline,
-        href: '/dashboard/orders/current'
+        id: 5,
+        name: 'Cards',
+        href: '/base-ui/cards'
       },
       {
-        id: 2,
-        name: 'Order History',
-        icon: IoCartOutline,
-        href: '/dashboard/orders/history'
-      }
-    ]
-  },
-  {
-    id: 5,
-    name: 'Messages',
-    icon: IoChatbubbleOutline,
-    children: [
-      {
-        id: 1,
-        name: 'Inbox',
-        icon: IoChatbubbleOutline,
-        href: '/dashboard/messages/inbox'
+        id: 6,
+        name: 'Tabs',
+        href: '/base-ui/tabs'
       },
       {
-        id: 2,
-        name: 'Sent',
-        icon: IoChatbubbleOutline,
-        href: '/dashboard/messages/sent'
-      }
-    ]
-  },
-  {
-    id: 6,
-    name: 'Help',
-    icon: IoChatbubbleOutline,
-    href: '/dashboard/help'
-  },
-  {
-    id: 7,
-    name: 'Reports',
-    icon: IoSettingsOutline,
-    href: '/dashboard/reports'
-  },
-  {
-    id: 8,
-    name: 'Notifications',
-    icon: IoChatbubbleOutline,
-    href: '/dashboard/notifications'
-  },
-  {
-    id: 9,
-    name: 'Analytics',
-    icon: IoSettingsOutline,
-    href: '/dashboard/analytics'
-  },
-  {
-    id: 10,
-    name: 'Products',
-    icon: IoCartOutline,
-    children: [
-      {
-        id: 1,
-        name: 'New Arrivals',
-        icon: IoCartOutline,
-        href: '/dashboard/products/new'
+        id: 7,
+        name: 'Modal',
+        href: '/base-ui/modal'
       },
       {
-        id: 2,
-        name: 'Best Sellers',
-        icon: IoCartOutline,
-        href: '/dashboard/products/best'
+        id: 8,
+        name: 'Side Panel',
+        href: '/base-ui/side-panel'
+      },
+      {
+        id: 9,
+        name: 'Tooltips',
+        href: '/base-ui/tooltips'
+      },
+      {
+        id: 10,
+        name: 'Dropdowns',
+        href: '/base-ui/dropdown'
       }
     ]
   },
   {
     id: 11,
-    name: 'Admin',
-    icon: IoPersonOutline,
+    name: 'Forms',
+    icon: RiFileList3Line,
     children: [
       {
-        id: 1,
-        name: 'User Management',
-        icon: IoPersonOutline,
-        href: '/dashboard/admin/users'
+        id: 12,
+        name: 'Inputs',
+        href: '/forms/inputs'
       },
       {
-        id: 2,
-        name: 'Roles',
-        icon: IoPersonOutline,
-        href: '/dashboard/admin/roles'
+        id: 13,
+        name: 'Selects',
+        href: '/forms/selects'
+      },
+      {
+        id: 14,
+        name: 'Textareas',
+        href: '/forms/textareas'
+      },
+      {
+        id: 15,
+        name: 'Checkboxes',
+        href: '/forms/checkboxes'
+      },
+      {
+        id: 16,
+        name: 'Radios',
+        href: '/forms/radios'
+      },
+      {
+        id: 17,
+        name: 'Switches',
+        href: '/forms/switches'
+      },
+      {
+        id: 18,
+        name: 'Date Pickers',
+        href: '/forms/date-pickers'
+      },
+      {
+        id: 19,
+        name: 'Time Pickers',
+        href: '/forms/time-pickers'
+      },
+      {
+        id: 20,
+        name: 'Date Time Pickers',
+        href: '/forms/date-time-pickers'
+      },
+      {
+        id: 21,
+        name: 'File Uploads',
+        href: '/forms/file-uploads'
       }
     ]
   },
   {
-    id: 12,
-    name: 'Logout',
-    icon: IoLogOutOutline,
-    href: '/dashboard/logout'
+    id: 22,
+    name: 'React Tables',
+    icon: RiLayoutGridLine,
+    children: [
+      {
+        id: 23,
+        name: 'Simple Table',
+        href: '/tables/simple-table'
+      },
+      {
+        id: 24,
+        name: 'React Table Basic',
+        href: '/tables/react-table'
+      },
+      {
+        id: 25,
+        name: 'With Sorting',
+        href: '/tables/react-table-sorting'
+      },
+      {
+        id: 26,
+        name: 'With Filtering',
+        href: '/tables/react-table-filtering'
+      },
+      {
+        id: 27,
+        name: 'With Pagination',
+        href: '/tables/react-table-pagination'
+      },
+      {
+        id: 28,
+        name: 'With Row Selection',
+        href: '/tables/react-table-row-selection'
+      },
+      {
+        id: 29,
+        name: 'With Column Order',
+        href: '/tables/react-table-column-order'
+      },
+      {
+        id: 30,
+        name: 'With Row Details',
+        href: '/tables/react-table-row-details'
+      },
+      {
+        id: 31,
+        name: 'Editable',
+        href: '/tables/react-table-editable'
+      },
+      {
+        id: 32,
+        name: 'Server Side Pagination',
+        href: '/tables/react-table-server-side-pagination'
+      },
+      {
+        id: 33,
+        name: 'Server Side Sorting',
+        href: '/tables/react-table-server-side-sorting'
+      }
+    ]
+  },
+  {
+    id: 34,
+    name: 'Charts',
+    icon: RiPieChart2Line,
+    href: '/charts'
+  },
+  {
+    id: 35,
+    name: 'Pages',
+    icon: RiPagesLine,
+    children: [
+      {
+        id: 36,
+        name: 'Sign In',
+        href: '/pages/sign-in'
+      },
+      {
+        id: 37,
+        name: 'Sign Up',
+        href: '/pages/sign-up'
+      },
+      {
+        id: 38,
+        name: 'Forgot Password',
+        href: '/pages/forgot-password'
+      },
+      {
+        id: 39,
+        name: 'Reset Password',
+        href: '/pages/reset-password'
+      },
+      {
+        id: 40,
+        name: '404',
+        href: '/pages/404'
+      },
+      {
+        id: 41,
+        name: '500',
+        href: '/pages/500'
+      }
+    ]
+  },
+  {
+    id: 42,
+    name: 'Documentation',
+    icon: RiBookReadLine,
+    href: '/documentation'
+  },
+  {
+    id: 43,
+    name: 'Support',
+    icon: RiAlignTop,
+    href: '/support'
+  },
+  {
+    id: 44,
+    name: 'Help',
+    icon: RiQuestionnaireLine,
+    href: '/help'
   }
 ]

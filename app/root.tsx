@@ -6,8 +6,10 @@ import {
   Scripts,
   ScrollRestoration
 } from '@remix-run/react'
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useState } from 'react'
 import './tailwind.css'
+
 import { LayoutProvider } from './contexts'
 
 export const links: LinksFunction = () => [
@@ -35,7 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="h-screen bg-gray-100">
+      <body className="h-screen bg-slate-100">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -45,9 +47,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000
+          }
+        }
+      })
+  )
   return (
-    <LayoutProvider>
-      <Outlet />
-    </LayoutProvider>
+    <QueryClientProvider client={queryClient}>
+      <LayoutProvider>
+        <Outlet />
+      </LayoutProvider>
+      {/* <ReactQueryDevtools
+        initialIsOpen={false}
+        buttonPosition="bottom-left"
+      /> */}
+    </QueryClientProvider>
   )
 }

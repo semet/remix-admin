@@ -31,7 +31,7 @@ export const SidebarContent = () => {
   return (
     <div
       ref={ref}
-      className="p-4"
+      className="scrollbar-thin scrollbar-thumb-black/15 scrollbar-track-primary max-h-screen overflow-y-auto px-4 pb-20 pt-4"
     >
       <ul className="mt-4 flex flex-col gap-2">
         {!width ? (
