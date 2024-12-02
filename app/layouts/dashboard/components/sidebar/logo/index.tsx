@@ -26,9 +26,9 @@ export const Logo = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ type: 'spring', bounce: 0 }}
-              src="/images/logo-light.png"
+              src="/images/logo-lg.png"
               alt="Logo"
-              className="h-[17px] w-[100px] object-contain"
+              className="h-[30px] w-[100px] object-contain"
             />
           ) : (
             <motion.img
