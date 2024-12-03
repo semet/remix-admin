@@ -37,7 +37,7 @@ export const DesktopSidebarLarge: FC<Props> = ({
         as={'button'}
         onClick={() => setActiveTab((prev) => (prev === id ? null : id))}
         className={twMerge([
-          'flex w-full items-start justify-start text-slate-300 hover:text-white',
+          'flex w-full items-start justify-start text-slate-300 hover:text-white focus:outline-none',
           activeTab === id && 'text-white'
         ])}
       >

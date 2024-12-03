@@ -4,17 +4,27 @@ import { CgMenuLeft, CgChevronDoubleRight } from 'react-icons/cg'
 import { useLayout } from '~/contexts'
 
 export const ToggleSidebar = () => {
-  const { toggleSidebar, sidebarExpanded } = useLayout()
-
+  const {
+    toggleDesktopSidebar,
+    toggleMobileSidebar,
+    desktopSidebarExpanded,
+    windowWidth
+  } = useLayout()
   return (
     <motion.button
-      onClick={toggleSidebar}
+      onClick={() => {
+        if (windowWidth <= 767) {
+          toggleMobileSidebar()
+        } else {
+          toggleDesktopSidebar()
+        }
+      }}
       className="text-slate-500 hover:text-slate-700"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
       <AnimatePresence>
-        {sidebarExpanded ? (
+        {desktopSidebarExpanded ? (
           <motion.div
             key="chevron-right"
             initial={{ x: -30, opacity: 0 }}

@@ -5,7 +5,7 @@ import { useResizeObserver } from 'usehooks-ts'
 import { useLayout } from '~/contexts'
 
 export const Logo = () => {
-  const { sidebarExpanded } = useLayout()
+  const { desktopSidebarExpanded } = useLayout()
   const ref = useRef<HTMLDivElement>(null)
   const { width } = useResizeObserver({
     ref
@@ -20,7 +20,7 @@ export const Logo = () => {
         <div className="h-[17px] w-[17px] animate-pulse rounded-full bg-slate-300 lg:w-[100px] lg:rounded-md"></div>
       ) : (
         <>
-          {sidebarExpanded ? (
+          {desktopSidebarExpanded ? (
             <motion.img
               key="logo-light"
               initial={{ opacity: 0 }}

@@ -1,4 +1,5 @@
 import { Link, useLocation } from '@remix-run/react'
+import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { useResizeObserver } from 'usehooks-ts'
@@ -14,7 +15,7 @@ import {
 export const SidebarContent = () => {
   const [activeTab, setActiveTab] = useState<number | null>(null)
   const { pathname } = useLocation()
-  const { sidebarExpanded } = useLayout()
+  const { desktopSidebarExpanded } = useLayout()
   const ref = useRef<HTMLDivElement>(null)
   const { width } = useResizeObserver({
     ref
@@ -29,9 +30,21 @@ export const SidebarContent = () => {
     }
   }, [pathname])
   return (
-    <div
+    <motion.div
+      initial={{
+        width: desktopSidebarExpanded ? 250 : 70,
+        transformOrigin: 'left'
+      }}
+      animate={{
+        width: desktopSidebarExpanded ? 250 : 70,
+        transformOrigin: 'left'
+      }}
+      transition={{ type: 'spring', bounce: 0, duration: 0.3 }}
       ref={ref}
-      className="scrollbar-thin scrollbar-thumb-black/15 scrollbar-track-primary max-h-screen overflow-y-auto px-4 pb-20 pt-4"
+      className={twMerge([
+        'max-h-screen overflow-y-auto px-4 pb-20 pt-4 scrollbar-thin scrollbar-track-primary scrollbar-thumb-black/15',
+        desktopSidebarExpanded ? 'w-[250px]' : 'w-auto'
+      ])}
     >
       <ul className="mt-4 flex flex-col gap-2">
         {!width ? (
@@ -49,7 +62,9 @@ export const SidebarContent = () => {
                     onClick={() => setActiveTab(null)}
                     className={twMerge([
                       'flex items-start gap-2 text-slate-300 hover:text-white',
-                      sidebarExpanded ? 'justify-start' : 'justify-center',
+                      desktopSidebarExpanded
+                        ? 'justify-start'
+                        : 'justify-center',
                       pathname === href && 'text-white'
                     ])}
                   >
@@ -57,7 +72,7 @@ export const SidebarContent = () => {
                     <span
                       className={twMerge([
                         'text-sm',
-                        sidebarExpanded ? 'inline-block' : 'hidden'
+                        desktopSidebarExpanded ? 'inline-block' : 'hidden'
                       ])}
                     >
                       {name}
@@ -65,7 +80,7 @@ export const SidebarContent = () => {
                   </Link>
                 ) : (
                   <>
-                    {sidebarExpanded ? (
+                    {desktopSidebarExpanded ? (
                       <DesktopSidebarLarge
                         activeTab={activeTab}
                         icon={Icon}
@@ -91,6 +106,6 @@ export const SidebarContent = () => {
           </>
         )}
       </ul>
-    </div>
+    </motion.div>
   )
 }
