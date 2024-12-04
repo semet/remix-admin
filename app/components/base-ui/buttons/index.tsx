@@ -28,11 +28,11 @@ export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
       ref={ref}
       className={twMerge([
         'flex h-fit items-center justify-center rounded-sm px-4 py-1.5 text-white',
-        variant === 'primary' && 'hover:bg-primary-100 bg-primary',
-        variant === 'success' && 'hover:bg-success-100 bg-success',
-        variant === 'error' && 'hover:bg-danger-100 bg-danger',
-        variant === 'warning' && 'hover:bg-warning-100 bg-warning',
-        variant === 'info' && 'hover:bg-info-100 bg-info',
+        variant === 'primary' && 'bg-primary hover:bg-primary-100',
+        variant === 'success' && 'bg-success hover:bg-success-100',
+        variant === 'error' && 'bg-danger hover:bg-danger-100',
+        variant === 'warning' && 'bg-warning hover:bg-warning-100',
+        variant === 'info' && 'bg-info hover:bg-info-100',
         size === 'sm' && 'px-3 py-1 text-xs',
         size === 'md' && 'px-4 py-2 text-base',
         size === 'lg' && 'px-6 py-2.5 text-lg',
