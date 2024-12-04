@@ -2,19 +2,14 @@ import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { Link, useLocation } from '@remix-run/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Dispatch, FC, SetStateAction } from 'react'
-import { IconType } from 'react-icons'
 import { IoChevronDown } from 'react-icons/io5'
 import { twMerge } from 'tailwind-merge'
 
 import { Menu } from '~/layouts/dashboard/data'
 
-type Props = {
+type Props = Menu & {
   activeTab: number | null
-  icon: IconType
-  id: number
-  name: string
   setActiveTab: Dispatch<SetStateAction<number | null>>
-  subs: Menu['children']
 }
 
 export const DesktopSidebarSmall: FC<Props> = ({

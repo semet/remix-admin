@@ -23,17 +23,17 @@ export const CurrencySelector = () => {
                 className="z-50 mt-1.5 flex w-[90px] origin-top flex-col rounded-sm bg-slate-50 p-4 shadow-md"
               >
                 <ul>
-                  <li className="hover:bg-primary-100 flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1">
+                  <li className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1">
                     <span className="font-semibold text-slate-500 hover:text-slate-700">
                       USD
                     </span>
                   </li>
-                  <li className="hover:bg-primary-100 flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1">
+                  <li className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1">
                     <span className="font-semibold text-slate-500 hover:text-slate-700">
                       EUR
                     </span>
                   </li>
-                  <li className="hover:bg-primary-100 flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1">
+                  <li className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1">
                     <span className="font-semibold text-slate-500 hover:text-slate-700">
                       GBP
                     </span>

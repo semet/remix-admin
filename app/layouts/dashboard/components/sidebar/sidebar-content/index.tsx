@@ -9,6 +9,7 @@ import {
   DesktopSidebarLarge,
   DesktopSidebarSmall,
   menus,
+  SidebarBadge,
   SidebarSkeleton
 } from '~/layouts/dashboard'
 
@@ -22,8 +23,8 @@ export const SidebarContent = () => {
   })
 
   useEffect(() => {
-    for (const { id, children } of menus) {
-      if (children?.some((child) => child.href === pathname)) {
+    for (const { id, subs } of menus) {
+      if (subs?.some((child) => child.href === pathname)) {
         setActiveTab(id)
         break
       }
@@ -51,58 +52,70 @@ export const SidebarContent = () => {
           <SidebarSkeleton />
         ) : (
           <>
-            {menus.map(({ id, href, icon: Icon, name, children }) => (
-              <li
-                key={name}
-                className="py-2"
-              >
-                {!children && href ? (
-                  <Link
-                    to={href}
-                    onClick={() => setActiveTab(null)}
-                    className={twMerge([
-                      'flex items-start gap-2 text-slate-300 hover:text-white',
-                      desktopSidebarExpanded
-                        ? 'justify-start'
-                        : 'justify-center',
-                      pathname === href && 'text-white'
-                    ])}
-                  >
-                    <Icon className="text-lg" />
-                    <span
+            {menus.map((menu) => {
+              const {
+                id,
+                href,
+                icon: Icon,
+                name,
+                subs,
+                badge,
+                badgeVariant,
+                ...rest
+              } = menu
+              return (
+                <li
+                  key={name}
+                  className="py-2"
+                >
+                  {!subs && href ? (
+                    <Link
+                      to={href}
+                      onClick={() => setActiveTab(null)}
                       className={twMerge([
-                        'text-sm',
-                        desktopSidebarExpanded ? 'inline-block' : 'hidden'
+                        'flex items-start gap-2 text-slate-300 hover:text-white',
+                        desktopSidebarExpanded
+                          ? 'justify-start'
+                          : 'justify-center',
+                        pathname === href && 'text-white'
                       ])}
                     >
-                      {name}
-                    </span>
-                  </Link>
-                ) : (
-                  <>
-                    {desktopSidebarExpanded ? (
-                      <DesktopSidebarLarge
-                        activeTab={activeTab}
-                        icon={Icon}
-                        id={id}
-                        name={name}
-                        setActiveTab={setActiveTab}
-                        subs={children}
-                      />
-                    ) : (
-                      <DesktopSidebarSmall
-                        activeTab={activeTab}
-                        icon={Icon}
-                        id={id}
-                        name={name}
-                        setActiveTab={setActiveTab}
-                        subs={children}
-                      />
-                    )}
-                  </>
-                )}
-              </li>
-            ))}
+                      <Icon className="text-lg" />
+                      <span
+                        className={twMerge([
+                          'text-sm',
+                          desktopSidebarExpanded ? 'inline-block' : 'hidden'
+                        ])}
+                      >
+                        {name}
+                      </span>
+                      {badge && desktopSidebarExpanded && (
+                        <SidebarBadge
+                          badge={badge}
+                          variant={badgeVariant}
+                        />
+                      )}
+                    </Link>
+                  ) : (
+                    <>
+                      {desktopSidebarExpanded ? (
+                        <DesktopSidebarLarge
+                          activeTab={activeTab}
+                          setActiveTab={setActiveTab}
+                          {...menu}
+                        />
+                      ) : (
+                        <DesktopSidebarSmall
+                          activeTab={activeTab}
+                          setActiveTab={setActiveTab}
+                          {...menu}
+                        />
+                      )}
+                    </>
+                  )}
+                </li>
+              )
+            })}
           </>
         )}
       </ul>

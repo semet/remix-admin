@@ -5,7 +5,7 @@ import { IoMdClose } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
 
 import { useLayout } from '~/contexts'
-import { DesktopSidebarLarge } from '~/layouts/dashboard'
+import { DesktopSidebarLarge, SidebarBadge } from '~/layouts/dashboard'
 import { menus } from '~/layouts/dashboard/data'
 
 export const MobileSidebarContent = () => {
@@ -13,8 +13,8 @@ export const MobileSidebarContent = () => {
   const [activeTab, setActiveTab] = useState<number | null>(null)
   const { pathname } = useLocation()
   useEffect(() => {
-    for (const { id, children } of menus) {
-      if (children?.some((child) => child.href === pathname)) {
+    for (const { id, subs } of menus) {
+      if (subs?.some((child) => child.href === pathname)) {
         setActiveTab(id)
         break
       }
@@ -42,38 +42,55 @@ export const MobileSidebarContent = () => {
       </div>
       <div className="h-screen overflow-y-auto px-4 pb-20 pt-4 scrollbar-thin scrollbar-track-primary scrollbar-thumb-black/15">
         <ul className="mt-4 flex flex-col gap-2">
-          {menus.map(({ id, href, icon: Icon, name, children }) => (
-            <li
-              key={name}
-              className="py-2"
-            >
-              {!children && href ? (
-                <Link
-                  to={href}
-                  onClick={() => setActiveTab(null)}
-                  className={twMerge([
-                    'flex items-start justify-start gap-2 text-slate-300 hover:text-white',
+          {menus.map((menu) => {
+            const {
+              id,
+              href,
+              icon: Icon,
+              name,
+              badge,
+              badgeVariant,
+              subs
+            } = menu
+            return (
+              <li
+                key={name}
+                className="py-2"
+              >
+                {!subs && href ? (
+                  <Link
+                    to={href}
+                    onClick={() => {
+                      setActiveTab(id)
+                      toggleMobileSidebar()
+                    }}
+                    className={twMerge([
+                      'flex items-start justify-start gap-2 text-slate-300 hover:text-white',
 
-                    pathname === href && 'text-white'
-                  ])}
-                >
-                  <Icon className="text-lg" />
-                  <span className={twMerge(['inline-block text-sm'])}>
-                    {name}
-                  </span>
-                </Link>
-              ) : (
-                <DesktopSidebarLarge
-                  activeTab={activeTab}
-                  icon={Icon}
-                  id={id}
-                  name={name}
-                  setActiveTab={setActiveTab}
-                  subs={children}
-                />
-              )}
-            </li>
-          ))}
+                      pathname === href && 'text-white'
+                    ])}
+                  >
+                    <Icon className="text-lg" />
+                    <span className={twMerge(['inline-block text-sm'])}>
+                      {name}
+                    </span>
+                    {badge && (
+                      <SidebarBadge
+                        badge={badge}
+                        variant={badgeVariant}
+                      />
+                    )}
+                  </Link>
+                ) : (
+                  <DesktopSidebarLarge
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    {...menu}
+                  />
+                )}
+              </li>
+            )
+          })}
         </ul>
       </div>
     </div>

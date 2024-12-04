@@ -1,6 +1,11 @@
 import { Outlet } from '@remix-run/react'
 
-import { Content, Header, MobileSidebar, Sidebar } from '~/layouts/dashboard'
+import {
+  ContentWrapper,
+  Header,
+  MobileSidebar,
+  Sidebar
+} from '~/layouts/dashboard'
 
 const DashboardLayout = () => {
   return (
@@ -9,9 +14,9 @@ const DashboardLayout = () => {
       <MobileSidebar />
       <div className="flex flex-1 flex-col">
         <Header />
-        <Content>
+        <ContentWrapper>
           <Outlet />
-        </Content>
+        </ContentWrapper>
       </div>
     </div>
   )

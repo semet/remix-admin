@@ -10,7 +10,7 @@ import {
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-10 flex min-h-[70px] justify-between bg-white px-4 shadow-md">
+    <header className="sticky top-0 z-10 flex min-h-[70px] justify-between bg-white px-4 shadow">
       <div className="flex items-center gap-4">
         <ToggleSidebar />
         <Deposit />

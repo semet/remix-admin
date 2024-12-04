@@ -6,31 +6,32 @@ import {
 import { Link, useLocation } from '@remix-run/react'
 import { AnimatePresence, easeInOut, motion } from 'framer-motion'
 import { Dispatch, FC, SetStateAction } from 'react'
-import { IconType } from 'react-icons'
 import { BsDash } from 'react-icons/bs'
 import { IoChevronDown } from 'react-icons/io5'
 import { twMerge } from 'tailwind-merge'
 
-import { Menu } from '~/layouts/dashboard/data'
+import { useLayout } from '~/contexts'
+import { Menu, SidebarBadge } from '~/layouts/dashboard'
 
-type Props = {
+type Props = Menu & {
   activeTab: number | null
-  icon: IconType
-  id: number
-  name: string
   setActiveTab: Dispatch<SetStateAction<number | null>>
-  subs: Menu['children']
 }
 
-export const DesktopSidebarLarge: FC<Props> = ({
-  activeTab,
-  icon: Icon,
-  id,
-  name,
-  setActiveTab,
-  subs
-}) => {
+export const DesktopSidebarLarge: FC<Props> = (props) => {
+  const {
+    activeTab,
+    icon: Icon,
+    id,
+    name,
+    setActiveTab,
+    subs,
+    badge,
+    badgeVariant
+  } = props
   const { pathname } = useLocation()
+  const { toggleMobileSidebar, windowWidth } = useLayout()
+
   return (
     <Disclosure>
       <DisclosureButton
@@ -41,9 +42,15 @@ export const DesktopSidebarLarge: FC<Props> = ({
           activeTab === id && 'text-white'
         ])}
       >
-        <div className="flex flex-1 justify-start gap-2">
+        <div className="relative flex flex-1 justify-start gap-2">
           <Icon className="text-lg" />
           <span className="inline-block text-sm">{name}</span>
+          {badge && (
+            <SidebarBadge
+              badge={badge}
+              variant={badgeVariant}
+            />
+          )}
         </div>
         <IoChevronDown
           className={twMerge([
@@ -69,7 +76,7 @@ export const DesktopSidebarLarge: FC<Props> = ({
               exit={{ opacity: 0 }}
             >
               <ul className="mt-2 flex origin-top flex-col pl-4">
-                {subs?.map(({ href, name }) => (
+                {subs?.map(({ href, name, badge, badgeVariant }) => (
                   <motion.li
                     key={name}
                     className={twMerge([
@@ -85,10 +92,21 @@ export const DesktopSidebarLarge: FC<Props> = ({
                   >
                     <Link
                       to={href}
-                      className="flex items-center"
+                      className="flex items-center gap-1"
+                      onClick={() => {
+                        if (windowWidth <= 767) {
+                          toggleMobileSidebar()
+                        }
+                      }}
                     >
                       <BsDash className="inline-block" />
                       <span className="inline-block text-sm">{name}</span>
+                      {badge && (
+                        <SidebarBadge
+                          badge={badge}
+                          variant={badgeVariant}
+                        />
+                      )}
                     </Link>
                   </motion.li>
                 ))}

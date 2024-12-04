@@ -11,12 +11,22 @@ import {
   RiQuestionnaireLine
 } from 'react-icons/ri'
 
+import { Variant } from '~/types'
+
 export type Menu = {
   id: number
   name: string
   icon: IconType
   href?: string
-  children?: Required<Omit<Menu, 'children' | 'icon'>>[]
+  badge?: string
+  badgeVariant?: Variant
+  subs?: {
+    id: number
+    name: string
+    href: string
+    badge?: string
+    badgeVariant?: Variant
+  }[]
 }
 
 export const menus: Menu[] = [
@@ -24,52 +34,56 @@ export const menus: Menu[] = [
     id: 1,
     name: 'Dashboard',
     icon: RiDashboard2Line,
-    href: '/dashboard'
+    href: '/dashboard',
+    badge: 'New',
+    badgeVariant: 'success'
   },
   {
     id: 2,
     name: 'Base UI',
     icon: RiPencilRuler2Line,
-    children: [
+    subs: [
       {
         id: 3,
         name: 'Alerts',
-        href: '/base-ui/alerts'
+        href: '/dashboard/base-ui/alerts'
       },
       {
         id: 4,
         name: 'Buttons',
-        href: '/base-ui/buttons'
+        href: '/dashboard/base-ui/buttons'
       },
       {
         id: 5,
         name: 'Cards',
-        href: '/base-ui/cards'
+        href: '/dashboard/base-ui/cards'
       },
       {
         id: 6,
         name: 'Tabs',
-        href: '/base-ui/tabs'
+        href: '/dashboard/base-ui/tabs'
       },
       {
         id: 7,
         name: 'Modal',
-        href: '/base-ui/modal'
+        href: '/dashboard/base-ui/modal'
       },
       {
         id: 8,
         name: 'Side Panel',
-        href: '/base-ui/side-panel'
+        href: '/dashboard/base-ui/side-panel'
       },
       {
         id: 9,
         name: 'Tooltips',
-        href: '/base-ui/tooltips'
+        href: '/dashboard/base-ui/tooltips'
       },
       {
         id: 10,
         name: 'Dropdowns',
-        href: '/base-ui/dropdown'
+        href: '/dashboard/base-ui/dropdown',
+        badge: 'Trending',
+        badgeVariant: 'warning'
       }
     ]
   },
@@ -77,7 +91,7 @@ export const menus: Menu[] = [
     id: 11,
     name: 'Forms',
     icon: RiFileList3Line,
-    children: [
+    subs: [
       {
         id: 12,
         name: 'Inputs',
@@ -134,7 +148,7 @@ export const menus: Menu[] = [
     id: 22,
     name: 'React Tables',
     icon: RiLayoutGridLine,
-    children: [
+    subs: [
       {
         id: 23,
         name: 'Simple Table',
@@ -202,7 +216,7 @@ export const menus: Menu[] = [
     id: 35,
     name: 'Pages',
     icon: RiPagesLine,
-    children: [
+    subs: [
       {
         id: 36,
         name: 'Sign In',
