@@ -77,13 +77,6 @@ export const menus: Menu[] = [
         id: 9,
         name: 'Tooltips',
         href: '/dashboard/base-ui/tooltips'
-      },
-      {
-        id: 10,
-        name: 'Dropdowns',
-        href: '/dashboard/base-ui/dropdown',
-        badge: 'Trending',
-        badgeVariant: 'warning'
       }
     ]
   },

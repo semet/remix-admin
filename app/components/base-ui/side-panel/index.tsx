@@ -24,12 +24,12 @@ type Props = PropsWithChildren<{
   dialogClassName?: string
   panelClassName?: string
   contentClassName?: string
-  size?: Size
   title?: ReactNode
-  scrollable?: boolean
+  position?: 'left' | 'right'
+  size?: Size
 }>
 
-export const Modal: FC<Props> = (props) => {
+export const SidePanel: FC<Props> = (props) => {
   const {
     isOpen,
     setIsOpen,
@@ -38,9 +38,9 @@ export const Modal: FC<Props> = (props) => {
     dialogClassName,
     panelClassName,
     contentClassName,
-    size = 'sm',
     title,
-    scrollable = false
+    position = 'right',
+    size = 'md'
   } = props
   return (
     <>
@@ -59,26 +59,28 @@ export const Modal: FC<Props> = (props) => {
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black/40"
             />
-            <div className="fixed inset-0 top-20 flex w-screen justify-center p-4">
+            <div
+              className={twMerge([
+                'fixed top-0 flex justify-center',
+                position === 'right' ? 'right-0' : 'left-0',
+                size === 'sm' ? 'w-1/3' : size === 'md' ? 'w-1/2' : 'w-2/3'
+              ])}
+            >
               <DialogPanel
                 as={motion.div}
-                initial={{ opacity: 0, y: -100 }}
+                initial={{ opacity: 0.9, x: position === 'right' ? 200 : -200 }}
                 animate={{
                   opacity: 1,
-                  y: 0,
+                  x: 0,
                   transition: { duration: 0.5, type: 'spring', bounce: 0 }
                 }}
                 exit={{
                   opacity: 0,
-                  y: -100,
+                  x: position === 'right' ? 200 : -200,
                   transition: { duration: 0.5, type: 'spring', bounce: 0 }
                 }}
                 className={twMerge([
-                  'relative w-full overflow-hidden rounded bg-white shadow',
-                  size === 'sm' && 'w-96',
-                  size === 'md' && 'w-[640px]',
-                  size === 'lg' && 'w-[640px] lg:w-[900px]',
-                  scrollable ? 'h-auto pb-6' : 'h-fit',
+                  'relative h-screen overflow-hidden bg-white',
                   panelClassName
                 ])}
               >
@@ -86,8 +88,7 @@ export const Modal: FC<Props> = (props) => {
                   <DialogTitle
                     as="h4"
                     className={twMerge([
-                      'border-b bg-white p-4 text-lg font-bold text-slate-700',
-                      scrollable && 'sticky top-0 z-10'
+                      'border-b bg-white p-4 text-lg font-bold text-slate-700'
                     ])}
                   >
                     {title}
