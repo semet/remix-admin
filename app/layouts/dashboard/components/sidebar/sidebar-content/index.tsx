@@ -53,16 +53,7 @@ export const SidebarContent = () => {
         ) : (
           <>
             {menus.map((menu) => {
-              const {
-                id,
-                href,
-                icon: Icon,
-                name,
-                subs,
-                badge,
-                badgeVariant,
-                ...rest
-              } = menu
+              const { href, icon: Icon, name, subs, badge, badgeVariant } = menu
               return (
                 <li
                   key={name}
