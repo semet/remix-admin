@@ -63,7 +63,7 @@ export const SidePanel: FC<Props> = (props) => {
               className={twMerge([
                 'fixed top-0 flex justify-center',
                 position === 'right' ? 'right-0' : 'left-0',
-                size === 'sm' ? 'w-1/3' : size === 'md' ? 'w-1/2' : 'w-2/3'
+                size === 'sm' ? 'w-1/4' : size === 'md' ? 'w-1/3' : 'w-1/2'
               ])}
             >
               <DialogPanel
