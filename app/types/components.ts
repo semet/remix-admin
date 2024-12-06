@@ -4,6 +4,8 @@ export type Variant = 'primary' | 'success' | 'error' | 'warning' | 'info'
 
 export type Size = 'sm' | 'md' | 'lg'
 
+export type Position = 'top' | 'right' | 'bottom' | 'left'
+
 export type TabData<Key extends string | number> = {
   head: {
     key: Key

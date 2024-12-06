@@ -72,11 +72,6 @@ export const menus: Menu[] = [
         id: 8,
         name: 'Side Panel',
         href: '/dashboard/base-ui/side-panel'
-      },
-      {
-        id: 9,
-        name: 'Tooltips',
-        href: '/dashboard/base-ui/tooltips'
       }
     ]
   },
@@ -88,7 +83,7 @@ export const menus: Menu[] = [
       {
         id: 12,
         name: 'Inputs',
-        href: '/forms/inputs'
+        href: '/dashboard/forms/basic-inputs'
       },
       {
         id: 13,
@@ -97,8 +92,8 @@ export const menus: Menu[] = [
       },
       {
         id: 14,
-        name: 'Textareas',
-        href: '/forms/textareas'
+        name: 'Textarea',
+        href: '/forms/textarea'
       },
       {
         id: 15,

@@ -1,3 +1,4 @@
+import TailwindForms from '@tailwindcss/forms'
 import Typography from '@tailwindcss/typography'
 import ScrollBar from 'tailwind-scrollbar'
 import type { Config } from 'tailwindcss'
@@ -70,5 +71,5 @@ export default {
       }
     }
   },
-  plugins: [ScrollBar, Typography]
+  plugins: [ScrollBar, Typography, TailwindForms]
 } satisfies Config
