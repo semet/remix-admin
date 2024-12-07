@@ -88,12 +88,12 @@ export const menus: Menu[] = [
       {
         id: 13,
         name: 'Selects',
-        href: '/forms/selects'
+        href: '/dashboard/forms/select-inputs'
       },
       {
         id: 14,
-        name: 'Textarea',
-        href: '/forms/textarea'
+        name: 'Textarea & Editors',
+        href: '/dashboard/forms/text-editor'
       },
       {
         id: 15,

@@ -1,4 +1,5 @@
 import { MetaFunction } from '@remix-run/react'
+
 import { PageContainer, PageTitle } from '~/layouts/dashboard'
 
 export const meta: MetaFunction = () => {

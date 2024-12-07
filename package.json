@@ -32,6 +32,7 @@
     "react-select": "^5.8.3",
     "react-toastify": "^10.0.6",
     "recharts": "^2.13.3",
+    "remix-utils": "^7.7.0",
     "tailwind-merge": "^2.5.5",
     "usehooks-ts": "^3.1.0",
     "zod": "^3.23.8"

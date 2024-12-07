@@ -1,12 +1,12 @@
-import { ComponentProps, ReactNode } from 'react'
 import { FieldValues, Path, RegisterOptions } from 'react-hook-form'
+import type { OptionProps, Props } from 'react-select'
 
-export type InputProps<T extends FieldValues> = ComponentProps<'input'> & {
+export type AdvanceSelectProps<T extends FieldValues> = Props & {
   label?: string
   name: Path<T>
   rules?: RegisterOptions
   containerClassName?: string
   labelClassName?: string
-  leftNode?: ReactNode
-  rightNode?: ReactNode
 }
+
+export type TOptionProps = OptionProps

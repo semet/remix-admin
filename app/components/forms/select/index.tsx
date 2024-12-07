@@ -1,14 +1,14 @@
 import { AnimatePresence } from 'framer-motion'
 import { useId } from 'react'
-import { useFormContext, get, FieldError } from 'react-hook-form'
+import { FieldError, get, useFormContext } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 
 import { FormError } from '~/components/forms'
 
-import { InputProps } from './type'
+import { SelectProps } from './type'
 
-export const Input = <T extends Record<string, unknown>>(
-  props: InputProps<T>
+export const Select = <T extends Record<string, unknown>>(
+  props: SelectProps<T>
 ) => {
   const {
     id,
@@ -17,11 +17,9 @@ export const Input = <T extends Record<string, unknown>>(
     className,
     containerClassName,
     label,
-    leftNode,
-    rightNode,
+    options,
     labelClassName,
     required,
-    type = 'text',
     ...rest
   } = props
 
@@ -33,7 +31,6 @@ export const Input = <T extends Record<string, unknown>>(
   const generatedId = useId()
 
   const error: FieldError = get(errors, name)
-
   return (
     <div
       className={twMerge([
@@ -44,30 +41,30 @@ export const Input = <T extends Record<string, unknown>>(
       {label && (
         <label
           htmlFor={id ?? generatedId}
-          className={twMerge(['text-slate-600', labelClassName])}
+          className={twMerge(['text-base text-slate-600', labelClassName])}
         >
           {label} {required && <span className="text-danger">*</span>}
         </label>
       )}
-      <div
+      <select
+        id={id ?? generatedId}
         className={twMerge([
-          'flex overflow-hidden rounded-sm border has-[:focus]:border-info',
-          error ? 'border-danger' : 'border-slate-300'
+          'flex overflow-hidden rounded-sm text-slate-600 focus:border-info focus:ring-0',
+          error ? 'border-danger' : 'border-slate-300',
+          className
         ])}
+        {...register(name, rules)}
+        {...rest}
       >
-        {leftNode && leftNode}
-        <input
-          type={type}
-          id={id ?? generatedId}
-          className={twMerge([
-            'w-full rounded-sm border-none text-slate-600 focus:ring-0',
-            className
-          ])}
-          {...register(name, rules)}
-          {...rest}
-        />
-        {rightNode && rightNode}
-      </div>
+        {options.map((option) => (
+          <option
+            key={option.value}
+            value={option.value}
+          >
+            {option.label}
+          </option>
+        ))}
+      </select>
       <AnimatePresence>
         {error && (
           <FormError
