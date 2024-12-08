@@ -1,15 +1,16 @@
+import { MetaFunction } from '@remix-run/react'
 import { IconType } from 'react-icons'
+import {
+  MdErrorOutline,
+  MdInfoOutline,
+  MdOutlineCheck,
+  MdOutlineWarningAmber,
+  MdTagFaces
+} from 'react-icons/md'
+
 import { Button, Card } from '~/components/base-ui'
 import { PageContainer, PageTitle } from '~/layouts/dashboard'
 import { Variant } from '~/types'
-import {
-  MdOutlineCheck,
-  MdOutlineWarningAmber,
-  MdErrorOutline,
-  MdInfoOutline,
-  MdTagFaces
-} from 'react-icons/md'
-import { MetaFunction } from '@remix-run/react'
 
 export const meta: MetaFunction = () => {
   return [

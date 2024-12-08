@@ -98,7 +98,7 @@ export const menus: Menu[] = [
       {
         id: 15,
         name: 'Checkboxes',
-        href: '/forms/checkboxes'
+        href: '/dashboard/forms/checkboxes'
       },
       {
         id: 16,
