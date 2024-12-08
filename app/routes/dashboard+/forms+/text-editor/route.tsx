@@ -3,7 +3,7 @@ import { MetaFunction } from '@remix-run/react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button, Card } from '~/components/base-ui'
-import { Textarea, TextEditor } from '~/components/forms'
+import { CodeEditor, Textarea, TextEditor } from '~/components/forms'
 import { PageContainer, PageTitle } from '~/layouts/dashboard'
 
 import { inputSchema, TextEditorForm } from './schema'
@@ -22,7 +22,7 @@ const TextEditorPage = () => {
     resolver: zodResolver(inputSchema)
   })
 
-  const { handleSubmit, clearErrors } = formMethods
+  const { handleSubmit, clearErrors, reset } = formMethods
   const onSubmit = handleSubmit((data) => {
     // eslint-disable-next-line no-console
     console.log(data)
@@ -38,7 +38,7 @@ const TextEditorPage = () => {
         >
           <FormProvider {...formMethods}>
             <form onSubmit={onSubmit}>
-              <div className="space-y-2">
+              <div className="space-y-4">
                 <Textarea<TextEditorForm>
                   label="Comments"
                   name="comment"
@@ -50,12 +50,19 @@ const TextEditorPage = () => {
                   label="Message"
                   required
                 />
+                <CodeEditor<TextEditorForm>
+                  name="metas"
+                  label="Metas"
+                  language="html"
+                  required
+                />
               </div>
 
               <div className="mt-6 flex justify-center gap-2">
                 <Button
                   type="reset"
                   variant="error"
+                  onClick={() => reset()}
                 >
                   Reset
                 </Button>

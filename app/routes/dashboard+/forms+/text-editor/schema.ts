@@ -12,6 +12,18 @@ export const inputSchema = z.object({
       {
         message: 'Message must be at least 10 characters'
       }
+    ),
+  metas: z
+    .string()
+    .min(10, 'Metas must be at least 10 characters')
+    .or(z.undefined())
+    .refine(
+      (val) => {
+        return val !== undefined && val !== '' && val.length > 10
+      },
+      {
+        message: 'Metas must be at least 10 characters'
+      }
     )
 })
 
