@@ -1,5 +1,6 @@
 import { z } from 'zod'
 export const inputSchema = z.object({
+  comment: z.string().min(10, 'Comment must be at least 10 characters'),
   message: z
     .string()
     .min(10, 'Message must be at least 10 characters')

@@ -31,7 +31,7 @@ const extensions = [
 export const TextEditor = <T extends Record<string, unknown>>(
   props: EditorProps<T>
 ) => {
-  const { name, id } = props
+  const { name, id, label, required } = props
 
   const generatedId = useId()
 
@@ -55,20 +55,30 @@ export const TextEditor = <T extends Record<string, unknown>>(
   })
 
   return (
-    <div className="relative flex w-full flex-col">
-      <Toolbar editor={editor} />
-      <Controller
-        control={control}
-        name={name}
-        render={({ field }) => (
-          <EditorContent
-            editor={editor}
-            id={id ?? generatedId}
-            onClick={() => editor?.commands.focus()}
-            {...field}
-          />
-        )}
-      />
+    <div className="relative flex w-full flex-col gap-1">
+      {label && (
+        <label
+          htmlFor={id ?? generatedId}
+          className="text-slate-600"
+        >
+          {label} {required && <span className="text-danger">*</span>}
+        </label>
+      )}
+      <div className="flex flex-col">
+        <Toolbar editor={editor} />
+        <Controller
+          control={control}
+          name={name}
+          render={({ field }) => (
+            <EditorContent
+              editor={editor}
+              id={id ?? generatedId}
+              onClick={() => editor?.commands.focus()}
+              {...field}
+            />
+          )}
+        />
+      </div>
       <AnimatePresence>
         {error && (
           <FormError

@@ -10,6 +10,7 @@ export type EditorProps<T extends FieldValues> = Omit<
   name: Path<T>
   rules?: RegisterOptions
   containerClassName?: string
+  required?: boolean
 }
 
 export type EditorButtonProps = DetailedHTMLProps<

@@ -3,7 +3,7 @@ import { MetaFunction } from '@remix-run/react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button, Card } from '~/components/base-ui'
-import { TextEditor } from '~/components/forms'
+import { Textarea, TextEditor } from '~/components/forms'
 import { PageContainer, PageTitle } from '~/layouts/dashboard'
 
 import { inputSchema, TextEditorForm } from './schema'
@@ -34,11 +34,23 @@ const TextEditorPage = () => {
       <PageContainer className="space-y-4">
         <Card
           className="flex flex-col gap-4"
-          title="Tiptap Editor"
+          title="Editor Example"
         >
           <FormProvider {...formMethods}>
             <form onSubmit={onSubmit}>
-              <TextEditor<TextEditorForm> name="message" />
+              <div className="space-y-2">
+                <Textarea<TextEditorForm>
+                  label="Comments"
+                  name="comment"
+                  placeholder="Type your comment here..."
+                  required
+                />
+                <TextEditor<TextEditorForm>
+                  name="message"
+                  label="Message"
+                  required
+                />
+              </div>
 
               <div className="mt-6 flex justify-center gap-2">
                 <Button
