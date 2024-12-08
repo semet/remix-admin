@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => {
   ]
 }
 
-const BlankPage = () => {
+const RadioButtonsPage = () => {
   const variants = ['success', 'error', 'warning', 'info', 'primary'] as const
   const sizes = ['sm', 'md', 'lg'] as const
 
@@ -63,4 +63,4 @@ const BlankPage = () => {
   )
 }
 
-export default BlankPage
+export default RadioButtonsPage
