@@ -8,7 +8,7 @@ export type SelectProps<T extends FieldValues> = ComponentProps<'select'> & {
   containerClassName?: string
   labelClassName?: string
   options: {
-    value: string
+    value: string | number
     label: string
     disabled?: boolean
   }[]

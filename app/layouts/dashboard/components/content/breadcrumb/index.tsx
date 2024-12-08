@@ -7,7 +7,7 @@ export const Breadcrumb = () => {
   const paths = pathname.split('/').filter(Boolean)
 
   return (
-    <div className="flex">
+    <div className="hidden sm:flex">
       {paths.map((path, index) => (
         <div
           key={path}
