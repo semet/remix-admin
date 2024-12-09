@@ -3,7 +3,7 @@ import { MetaFunction } from '@remix-run/react'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { Button, Card } from '~/components/base-ui'
-import { FileInput } from '~/components/forms'
+import { DragAndDrop, FileInput } from '~/components/forms'
 import { PageContainer, PageTitle } from '~/layouts/dashboard'
 
 import { FileInputForm, inputSchema } from './schema'
@@ -26,7 +26,6 @@ const FileInputPage = () => {
     // eslint-disable-next-line no-console
     console.log(data)
   })
-
   return (
     <>
       <PageTitle title="File Input" />
@@ -58,6 +57,13 @@ const FileInputPage = () => {
                   disabled
                 />
               </div>
+              <div className="mt-4">
+                <DragAndDrop<FileInputForm>
+                  multiple
+                  maxFiles={2}
+                  name="dragAndDrop"
+                />
+              </div>
               <div className="mt-6 flex justify-center gap-2">
                 <Button
                   type="reset"
@@ -77,10 +83,6 @@ const FileInputPage = () => {
             </form>
           </FormProvider>
         </Card>
-        <Card
-          className="flex flex-col gap-4"
-          title="Drag And Drop File Input"
-        ></Card>
       </PageContainer>
     </>
   )

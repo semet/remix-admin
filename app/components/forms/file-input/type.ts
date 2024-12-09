@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode } from 'react'
+import { ComponentProps } from 'react'
 import { FieldValues, Path, RegisterOptions } from 'react-hook-form'
 
 export type FileInputProps<T extends FieldValues> = ComponentProps<'input'> & {
@@ -6,6 +6,4 @@ export type FileInputProps<T extends FieldValues> = ComponentProps<'input'> & {
   name: Path<T>
   rules?: RegisterOptions
   containerClassName?: string
-  leftNode?: ReactNode
-  rightNode?: ReactNode
 }

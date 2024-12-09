@@ -80,6 +80,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.3.1(react@18.3.1)
+  react-dropzone-esm:
+    specifier: ^15.2.0
+    version: 15.2.0(react@18.3.1)
   react-hook-form:
     specifier: ^7.53.2
     version: 7.53.2(react@18.3.1)
@@ -6556,6 +6559,16 @@ packages:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.23.2
+
+  /react-dropzone-esm@15.2.0(react@18.3.1):
+    resolution: {integrity: sha512-pPwR8xWVL+tFLnbAb8KVH5f6Vtl397tck8dINkZ1cPMxHWH+l9dFmIgRWgbh7V7jbjIcuKXCsVrXbhQz68+dVA==}
+    engines: {node: '>= 10.13'}
+    peerDependencies:
+      react: '>= 16.8 || 18.0.0'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.3.1
+    dev: false
 
   /react-hook-form@7.53.2(react@18.3.1):
     resolution: {integrity: sha512-YVel6fW5sOeedd1524pltpHX+jgU2u3DSDtXEaBORNdqiNrsX/nUI/iGXONegttg0mJVnfrIkiV0cmTU6Oo2xw==}
