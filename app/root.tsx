@@ -8,7 +8,7 @@ import {
 } from '@remix-run/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useState } from 'react'
-import './tailwind.css'
+import './styles/tailwind.css'
 
 import { LayoutProvider } from './contexts'
 

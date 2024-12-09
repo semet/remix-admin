@@ -1,0 +1,21 @@
+@import 'react-datepicker/dist/react-datepicker.css';
+
+.react-datepicker__view-calendar-icon input {
+  @apply h-[2.65rem] pl-10;
+}
+
+.react-datepicker {
+  @apply overflow-hidden rounded-md border-none bg-white shadow ring-1 ring-slate-400;
+}
+.react-datepicker__header {
+  @apply w-full border-none;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  @apply rounded-full !important;
+}
+.react-datepicker__day--selected {
+  @apply shadow;
+}

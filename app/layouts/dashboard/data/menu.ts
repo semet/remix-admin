@@ -113,7 +113,7 @@ export const menus: Menu[] = [
       {
         id: 18,
         name: 'Date Pickers',
-        href: '/forms/date-pickers'
+        href: '/dashboard/forms/date-pickers'
       },
       {
         id: 19,

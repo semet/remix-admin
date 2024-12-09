@@ -65,6 +65,7 @@ export const AdvanceSelect = <T extends Record<string, unknown>>(
                       newValue as ChangeEvent<HTMLInputElement>,
                       actionMeta
                     )
+                    return
                   }
                   field.onChange(newValue)
                 }}
