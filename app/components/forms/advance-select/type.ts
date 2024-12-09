@@ -6,7 +6,6 @@ export type AdvanceSelectProps<T extends FieldValues> = Props & {
   name: Path<T>
   rules?: RegisterOptions
   containerClassName?: string
-  labelClassName?: string
 }
 
 export type TOptionProps = OptionProps

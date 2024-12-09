@@ -116,19 +116,9 @@ export const menus: Menu[] = [
         href: '/dashboard/forms/date-pickers'
       },
       {
-        id: 19,
-        name: 'Time Pickers',
-        href: '/forms/time-pickers'
-      },
-      {
-        id: 20,
-        name: 'Date Time Pickers',
-        href: '/forms/date-time-pickers'
-      },
-      {
         id: 21,
-        name: 'File Uploads',
-        href: '/forms/file-uploads'
+        name: 'File Inputs',
+        href: '/dashboard/forms/file-inputs'
       }
     ]
   },

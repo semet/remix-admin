@@ -19,7 +19,6 @@ export const Input = <T extends Record<string, unknown>>(
     label,
     leftNode,
     rightNode,
-    labelClassName,
     required,
     type = 'text',
     ...rest
@@ -44,7 +43,7 @@ export const Input = <T extends Record<string, unknown>>(
       {label && (
         <label
           htmlFor={id ?? generatedId}
-          className={twMerge(['text-slate-600', labelClassName])}
+          className="text-slate-600"
         >
           {label} {required && <span className="text-danger">*</span>}
         </label>

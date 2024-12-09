@@ -5,10 +5,10 @@ import { twMerge } from 'tailwind-merge'
 
 import { FormError } from '~/components/forms'
 
-import { SelectProps } from './type'
+import { FileInputProps } from './type'
 
-export const Select = <T extends Record<string, unknown>>(
-  props: SelectProps<T>
+export const FileInput = <T extends Record<string, unknown>>(
+  props: FileInputProps<T>
 ) => {
   const {
     id,
@@ -17,8 +17,8 @@ export const Select = <T extends Record<string, unknown>>(
     className,
     containerClassName,
     label,
-    options,
     required,
+    type = 'file',
     ...rest
   } = props
 
@@ -45,25 +45,22 @@ export const Select = <T extends Record<string, unknown>>(
           {label} {required && <span className="text-danger">*</span>}
         </label>
       )}
-      <select
-        id={id ?? generatedId}
+      <div
         className={twMerge([
-          'flex overflow-hidden rounded-sm text-slate-600 focus:border-info focus:ring-0',
+          'relative flex h-[2.65rem] overflow-hidden rounded-sm border border-slate-300 focus-within:border-info has-[:disabled]:bg-slate-100',
           error ? 'border-danger' : 'border-slate-300',
           className
         ])}
-        {...register(name, rules)}
-        {...rest}
       >
-        {options.map((option) => (
-          <option
-            key={option.value}
-            value={option.value}
-          >
-            {option.label}
-          </option>
-        ))}
-      </select>
+        <input
+          type={type}
+          id={id ?? generatedId}
+          {...register(name, rules)}
+          className="w-full cursor-pointer border-none text-slate-600 file:mr-2 file:h-full file:cursor-pointer file:border-0 file:px-4 file:text-slate-500 focus:outline-none focus:ring-0 disabled:cursor-not-allowed file:disabled:bg-slate-300"
+          {...rest}
+        />
+      </div>
+
       <AnimatePresence>
         {error && (
           <FormError

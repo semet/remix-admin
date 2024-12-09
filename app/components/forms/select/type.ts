@@ -6,7 +6,6 @@ export type SelectProps<T extends FieldValues> = ComponentProps<'select'> & {
   name: Path<T>
   rules?: RegisterOptions
   containerClassName?: string
-  labelClassName?: string
   options: {
     value: string | number
     label: string

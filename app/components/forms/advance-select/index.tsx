@@ -20,7 +20,6 @@ export const AdvanceSelect = <T extends Record<string, unknown>>(
     label,
     onChange,
     containerClassName,
-    labelClassName,
     required,
     isSearchable = false,
     isMulti,
@@ -44,7 +43,7 @@ export const AdvanceSelect = <T extends Record<string, unknown>>(
       {label && (
         <label
           htmlFor={id ?? generatedId}
-          className={twMerge(['text-slate-600', labelClassName])}
+          className="text-slate-600"
         >
           {label} {required && <span className="text-danger">*</span>}
         </label>
