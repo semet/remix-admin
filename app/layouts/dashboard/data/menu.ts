@@ -108,7 +108,7 @@ export const menus: Menu[] = [
       {
         id: 17,
         name: 'Switches',
-        href: '/forms/switches'
+        href: '/dashboard/forms/switches'
       },
       {
         id: 18,
