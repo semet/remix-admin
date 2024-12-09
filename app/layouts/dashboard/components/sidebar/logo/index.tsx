@@ -28,7 +28,7 @@ export const Logo = () => {
               transition={{ type: 'spring', bounce: 0 }}
               src="/images/logo-lg.png"
               alt="Logo"
-              className="h-[30px] w-[100px] object-contain"
+              className="h-10 w-28 object-contain"
             />
           ) : (
             <motion.img
