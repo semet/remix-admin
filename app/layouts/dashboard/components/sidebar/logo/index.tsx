@@ -14,7 +14,7 @@ export const Logo = () => {
   return (
     <div
       ref={ref}
-      className="hidden h-[70px] items-center justify-center bg-black/15 md:flex"
+      className="hidden h-[70px] items-center justify-center bg-primary-50 shadow md:flex"
     >
       {!width ? (
         <div className="h-[17px] w-[17px] animate-pulse rounded-full bg-slate-300 lg:w-[100px] lg:rounded-md"></div>
@@ -36,9 +36,9 @@ export const Logo = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ type: 'spring', bounce: 0 }}
-              src="/images/logo-sm.png"
+              src="/images/logo-sm.webp"
               alt="Logo"
-              className="h-[17px] w-[100px] object-contain"
+              className="h-6 w-6 object-contain"
             />
           )}
         </>
