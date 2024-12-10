@@ -19,6 +19,7 @@ export const FileInput = <T extends Record<string, unknown>>(
     label,
     required,
     type = 'file',
+    size = 'md',
     ...rest
   } = props
 
@@ -40,7 +41,12 @@ export const FileInput = <T extends Record<string, unknown>>(
       {label && (
         <label
           htmlFor={id ?? generatedId}
-          className="text-slate-600"
+          className={twMerge([
+            'text-slate-600',
+            size === 'sm' && 'text-xs',
+            size === 'md' && 'text-sm',
+            size === 'lg' && 'text-lg'
+          ])}
         >
           {label} {required && <span className="text-danger">*</span>}
         </label>
@@ -49,6 +55,9 @@ export const FileInput = <T extends Record<string, unknown>>(
         className={twMerge([
           'relative flex h-[2.65rem] overflow-hidden rounded-sm border border-slate-300 focus-within:border-info has-[:disabled]:bg-slate-100',
           error ? 'border-danger' : 'border-slate-300',
+          size === 'sm' && 'h-8',
+          size === 'md' && 'h-10',
+          size === 'lg' && 'h-12',
           className
         ])}
       >
@@ -56,7 +65,12 @@ export const FileInput = <T extends Record<string, unknown>>(
           type={type}
           id={id ?? generatedId}
           {...register(name, rules)}
-          className="w-full cursor-pointer border-none text-slate-600 file:mr-2 file:h-full file:cursor-pointer file:border-0 file:px-4 file:text-slate-500 focus:outline-none focus:ring-0 disabled:cursor-not-allowed file:disabled:bg-slate-300"
+          className={twMerge([
+            'w-full cursor-pointer border-none text-slate-600 file:mr-2 file:h-full file:cursor-pointer file:border-0 file:px-4 file:text-slate-500 focus:outline-none focus:ring-0 disabled:cursor-not-allowed file:disabled:bg-slate-300',
+            size === 'sm' && 'text-xs',
+            size === 'md' && 'text-sm',
+            size === 'lg' && 'text-lg'
+          ])}
           {...rest}
         />
       </div>

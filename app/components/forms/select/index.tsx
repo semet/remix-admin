@@ -19,6 +19,7 @@ export const Select = <T extends Record<string, unknown>>(
     label,
     options,
     required,
+    size = 'md',
     ...rest
   } = props
 
@@ -40,7 +41,12 @@ export const Select = <T extends Record<string, unknown>>(
       {label && (
         <label
           htmlFor={id ?? generatedId}
-          className="text-slate-600"
+          className={twMerge([
+            'text-slate-600',
+            size === 'sm' && 'text-xs',
+            size === 'md' && 'text-sm',
+            size === 'lg' && 'text-lg'
+          ])}
         >
           {label} {required && <span className="text-danger">*</span>}
         </label>
@@ -50,6 +56,9 @@ export const Select = <T extends Record<string, unknown>>(
         className={twMerge([
           'flex overflow-hidden rounded-sm text-slate-600 focus:border-info focus:ring-0',
           error ? 'border-danger' : 'border-slate-300',
+          size === 'sm' && 'h-8 text-xs',
+          size === 'md' && 'h-10 text-sm',
+          size === 'lg' && 'h-12 text-lg',
           className
         ])}
         {...register(name, rules)}

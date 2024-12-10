@@ -23,6 +23,7 @@ export const AdvanceSelect = <T extends Record<string, unknown>>(
     required,
     isSearchable = false,
     isMulti,
+    size = 'md',
     ...rest
   } = props
   const generatedId = useId()
@@ -43,7 +44,12 @@ export const AdvanceSelect = <T extends Record<string, unknown>>(
       {label && (
         <label
           htmlFor={id ?? generatedId}
-          className="text-slate-600"
+          className={twMerge([
+            'text-slate-600',
+            size === 'sm' && 'text-xs',
+            size === 'md' && 'text-sm',
+            size === 'lg' && 'text-lg'
+          ])}
         >
           {label} {required && <span className="text-danger">*</span>}
         </label>
@@ -70,6 +76,12 @@ export const AdvanceSelect = <T extends Record<string, unknown>>(
                 }}
                 value={field.value}
                 isSearchable={isSearchable}
+                className={twMerge([
+                  '',
+                  size === 'sm' && 'text-xs',
+                  size === 'md' && 'text-sm',
+                  size === 'lg' && 'text-lg'
+                ])}
                 styles={{
                   control: (base, { isFocused }) => ({
                     ...base,
@@ -80,13 +92,35 @@ export const AdvanceSelect = <T extends Record<string, unknown>>(
                       : isFocused
                         ? '#299cdb'
                         : '#cbd5e1',
-                    height: isMulti ? 'auto' : '2.65rem',
-                    minHeight: '2.65rem',
+                    height: isMulti
+                      ? 'auto'
+                      : size === 'sm'
+                        ? '2rem'
+                        : size === 'md'
+                          ? '2.5rem'
+                          : '3rem',
+                    minHeight:
+                      size === 'sm'
+                        ? '2rem'
+                        : size === 'md'
+                          ? '2.5rem'
+                          : '3rem',
+                    fontSize:
+                      size === 'sm'
+                        ? '0.75rem'
+                        : size === 'md'
+                          ? '0.875rem'
+                          : '1.125rem',
                     color: '#475569'
                   }),
                   menu: (base) => ({
                     ...base,
-                    fontSize: '0.875rem'
+                    fontSize:
+                      size === 'sm'
+                        ? '0.75rem'
+                        : size === 'md'
+                          ? '0.875rem'
+                          : '1.125rem'
                   }),
                   indicatorSeparator: () => ({
                     display: 'none'

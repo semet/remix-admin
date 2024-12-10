@@ -3,14 +3,28 @@
 .react-datepicker__view-calendar-icon input {
   @apply h-[2.65rem] pl-10;
 }
-
+.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
+  @apply fill-primary text-primary !important;
+}
+.react-datepicker-popper[data-placement^='top'] .react-datepicker__triangle {
+  fill: #fff;
+  color: #fff;
+}
 .react-datepicker {
-  @apply overflow-hidden rounded-md border-none bg-white shadow ring-1 ring-slate-400;
+  @apply w-full overflow-hidden rounded-sm border-none shadow-md ring-0;
 }
 .react-datepicker__header {
-  @apply w-full border-none;
+  @apply h-full w-full border-none bg-primary;
 }
-
+.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+  @apply rounded-none;
+}
+.react-datepicker__current-month {
+  @apply text-white;
+}
+.react-datepicker__day-name {
+  @apply text-white;
+}
 .react-datepicker__day-name,
 .react-datepicker__day,
 .react-datepicker__time-name {
@@ -18,4 +32,15 @@
 }
 .react-datepicker__day--selected {
   @apply shadow;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range {
+  @apply content-center bg-primary text-center text-white shadow !important;
+}
+
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--in-selecting-range:hover,
+.react-datepicker__day--in-range:hover {
+  @apply content-center bg-primary-200 text-center text-white !important;
 }

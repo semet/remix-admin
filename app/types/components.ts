@@ -1,3 +1,4 @@
+import { Table } from '@tanstack/react-table'
 import { ReactNode } from 'react'
 
 export type Variant = 'primary' | 'success' | 'error' | 'warning' | 'info'
@@ -19,4 +20,27 @@ export type TabData<Key extends string | number> = {
 
 export type TabProps<Key extends string | number> = {
   data: Array<TabData<Key>>
+}
+
+export type PageSizeProps<T> = {
+  table: Table<T>
+}
+
+export type GlobalFilterProps<T> = PageSizeProps<T>
+
+export type PageSizeFilter = {
+  pageSize: {
+    label: string
+    value: number
+  }
+}
+
+export type GlobalFilter = {
+  keyword: string
+}
+
+export type PaginationProps<T> = {
+  table: Table<T>
+  totalData?: number
+  pageCount?: number
 }

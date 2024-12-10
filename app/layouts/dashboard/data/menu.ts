@@ -129,58 +129,38 @@ export const menus: Menu[] = [
     subs: [
       {
         id: 23,
-        name: 'Simple Table',
-        href: '/tables/simple-table'
-      },
-      {
-        id: 24,
-        name: 'React Table Basic',
-        href: '/tables/react-table'
+        name: 'Basic Table',
+        href: '/dashboard/tables/basic'
       },
       {
         id: 25,
-        name: 'With Sorting',
-        href: '/tables/react-table-sorting'
+        name: 'Sortable',
+        href: '/dashboard/tables/sortable'
       },
       {
         id: 26,
-        name: 'With Filtering',
-        href: '/tables/react-table-filtering'
+        name: 'Selectable',
+        href: '/dashboard/tables/selectable'
       },
       {
         id: 27,
-        name: 'With Pagination',
-        href: '/tables/react-table-pagination'
+        name: 'Draggable',
+        href: '/dashboard/tables/draggable'
       },
       {
         id: 28,
-        name: 'With Row Selection',
-        href: '/tables/react-table-row-selection'
+        name: 'Editable',
+        href: '/dashboard/tables/editable'
       },
       {
         id: 29,
-        name: 'With Column Order',
-        href: '/tables/react-table-column-order'
+        name: 'Expandable',
+        href: '/dashboard/tables/expandable'
       },
       {
         id: 30,
-        name: 'With Row Details',
-        href: '/tables/react-table-row-details'
-      },
-      {
-        id: 31,
-        name: 'Editable',
-        href: '/tables/react-table-editable'
-      },
-      {
-        id: 32,
-        name: 'Server Side Pagination',
-        href: '/tables/react-table-server-side-pagination'
-      },
-      {
-        id: 33,
-        name: 'Server Side Sorting',
-        href: '/tables/react-table-server-side-sorting'
+        name: 'Infinite Scroll',
+        href: '/dashboard/tables/infinite-scroll'
       }
     ]
   },

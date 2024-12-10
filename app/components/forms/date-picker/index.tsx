@@ -25,6 +25,7 @@ export const DatePicker = <T extends Record<string, unknown>>(
     minDate,
     maxDate,
     selected,
+    size = 'md',
     ...rest
   } = props
   const generatedId = useId()
@@ -42,7 +43,12 @@ export const DatePicker = <T extends Record<string, unknown>>(
       {label && (
         <label
           htmlFor={id ?? generatedId}
-          className="text-slate-600"
+          className={twMerge([
+            'text-slate-600',
+            size === 'sm' && 'text-xs',
+            size === 'md' && 'text-sm',
+            size === 'lg' && 'text-lg'
+          ])}
         >
           {label} {required && <span className="text-danger">*</span>}
         </label>
@@ -68,6 +74,9 @@ export const DatePicker = <T extends Record<string, unknown>>(
                 className={twMerge(
                   'mt-1 w-full items-center rounded-sm pl-8 text-slate-600 focus:border-info focus:ring-0',
                   error ? 'border-danger' : 'border-slate-300',
+                  size === 'sm' && 'h-8 text-xs',
+                  size === 'md' && 'h-10 text-sm',
+                  size === 'lg' && 'h-12 text-lg',
                   className
                 )}
                 selected={field.value ? new Date(field.value) : selected}

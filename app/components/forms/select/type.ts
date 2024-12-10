@@ -1,7 +1,12 @@
 import { ComponentProps } from 'react'
 import { FieldValues, Path, RegisterOptions } from 'react-hook-form'
 
-export type SelectProps<T extends FieldValues> = ComponentProps<'select'> & {
+import { Size } from '~/types'
+
+export type SelectProps<T extends FieldValues> = Omit<
+  ComponentProps<'select'>,
+  'size'
+> & {
   label?: string
   name: Path<T>
   rules?: RegisterOptions
@@ -11,4 +16,5 @@ export type SelectProps<T extends FieldValues> = ComponentProps<'select'> & {
     label: string
     disabled?: boolean
   }[]
+  size?: Size
 }

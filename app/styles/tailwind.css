@@ -2,6 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
 
 .ProseMirror {
   @apply prose-lg w-full rounded-b-sm border px-4 text-base text-slate-600 focus-within:outline-none !important;

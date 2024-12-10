@@ -21,6 +21,7 @@ export const Input = <T extends Record<string, unknown>>(
     rightNode,
     required,
     type = 'text',
+    size = 'md',
     ...rest
   } = props
 
@@ -43,7 +44,12 @@ export const Input = <T extends Record<string, unknown>>(
       {label && (
         <label
           htmlFor={id ?? generatedId}
-          className="text-slate-600"
+          className={twMerge([
+            'text-slate-600',
+            size === 'sm' && 'text-xs',
+            size === 'md' && 'text-sm',
+            size === 'lg' && 'text-lg'
+          ])}
         >
           {label} {required && <span className="text-danger">*</span>}
         </label>
@@ -51,6 +57,9 @@ export const Input = <T extends Record<string, unknown>>(
       <div
         className={twMerge([
           'flex overflow-hidden rounded-sm border has-[:focus]:border-info',
+          size === 'sm' && 'h-8',
+          size === 'md' && 'h-10',
+          size === 'lg' && 'h-12',
           error ? 'border-danger' : 'border-slate-300'
         ])}
       >
@@ -60,6 +69,9 @@ export const Input = <T extends Record<string, unknown>>(
           id={id ?? generatedId}
           className={twMerge([
             'w-full rounded-sm border-none text-slate-600 focus:ring-0',
+            size === 'sm' && 'text-xs',
+            size === 'md' && 'text-sm',
+            size === 'lg' && 'text-lg',
             className
           ])}
           {...register(name, rules)}
