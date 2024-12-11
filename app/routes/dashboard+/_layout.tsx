@@ -5,6 +5,7 @@ import {
   ContentWrapper,
   Header,
   MobileSidebar,
+  ScrollToTop,
   Sidebar
 } from '~/layouts/dashboard'
 
@@ -25,6 +26,7 @@ const DashboardLayout = () => {
         <Header />
         <ContentWrapper>
           <Outlet />
+          <ScrollToTop />
         </ContentWrapper>
       </div>
     </div>
