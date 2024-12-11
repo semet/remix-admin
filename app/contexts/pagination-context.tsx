@@ -1,4 +1,4 @@
-import { PaginationState } from '@tanstack/react-table'
+import { PaginationState, SortingState } from '@tanstack/react-table'
 import {
   createContext,
   Dispatch,
@@ -13,6 +13,8 @@ type PaginationContextType = {
   pagination: PaginationState
   setPagination: Dispatch<SetStateAction<PaginationState>>
   resetPagination: () => void
+  sorting: SortingState
+  setSorting: Dispatch<SetStateAction<SortingState>>
 }
 
 const PaginationContext = createContext<PaginationContextType | undefined>(
@@ -24,12 +26,15 @@ const PaginationProvider: FC<PropsWithChildren> = ({ children }) => {
     pageIndex: 0,
     pageSize: 10
   })
+  const [sorting, setSorting] = useState<SortingState>([])
   const resetPagination = () => setPagination({ ...pagination, pageIndex: 0 })
 
   const value = {
     pagination,
     setPagination,
-    resetPagination
+    resetPagination,
+    sorting,
+    setSorting
   }
   return (
     <PaginationContext.Provider value={value}>

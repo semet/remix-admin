@@ -7,6 +7,7 @@ import {
   ScrollRestoration
 } from '@remix-run/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { useState } from 'react'
 import './styles/tailwind.css'
 
@@ -63,10 +64,7 @@ export default function App() {
       <LayoutProvider>
         <Outlet />
       </LayoutProvider>
-      {/* <ReactQueryDevtools
-        initialIsOpen={false}
-        buttonPosition="bottom-left"
-      /> */}
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }

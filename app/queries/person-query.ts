@@ -6,7 +6,7 @@ import { PersonParams } from '~/schemas'
 
 export const usePersonQuery = (params: PersonParams) => {
   return useQuery({
-    queryKey: keyFactory.cart(params),
+    queryKey: keyFactory.person(params),
     queryFn: () => fetchData(params),
     placeholderData: keepPreviousData
   })

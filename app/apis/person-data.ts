@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 
-import { Person } from '~/schemas'
+import { Person, PersonParams } from '~/schemas'
 
 const range = (len: number) => {
   const arr: number[] = []
@@ -43,12 +43,33 @@ export function makeData(...lens: number[]) {
 
 const data = makeData(100)
 
-export async function fetchData(options: {
-  pageIndex: number
-  pageSize: number
-}) {
+export async function fetchData(options: PersonParams) {
   // Simulate some network latency
   await new Promise((r) => setTimeout(r, 500))
+
+  const { sorting } = options
+
+  if (sorting?.length > 0) {
+    const sortingType = sorting[0]?.desc ? -1 : 1
+    const sortBy = sorting[0]?.id
+
+    if (sortBy) {
+      data.sort((a, b) => {
+        const valueA = a[sortBy as keyof Person]
+        const valueB = b[sortBy as keyof Person]
+
+        if (typeof valueA === 'string' && typeof valueB === 'string') {
+          return sortingType * valueA.localeCompare(valueB)
+        }
+
+        if (typeof valueA === 'number' && typeof valueB === 'number') {
+          return sortingType * (valueA - valueB)
+        }
+
+        return 0
+      })
+    }
+  }
 
   return {
     rows: data.slice(

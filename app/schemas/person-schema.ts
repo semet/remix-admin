@@ -1,3 +1,5 @@
+import { SortingState } from '@tanstack/react-table'
+
 export type Person = {
   id: number
   firstName: string
@@ -13,4 +15,5 @@ export type Person = {
 export type PersonParams = {
   pageIndex: number
   pageSize: number
+  sorting: SortingState
 }

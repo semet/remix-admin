@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import {
   flexRender,
   getCoreRowModel,
@@ -6,14 +8,15 @@ import {
 } from '@tanstack/react-table'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
+import { BiSortDown, BiSortUp } from 'react-icons/bi'
 import { CgSpinner } from 'react-icons/cg'
 import { twMerge } from 'tailwind-merge'
 
-import { Pagination, RowPerPage, TableSearch } from '~/components/tables'
+import { RowPerPage, TableSearch, Pagination } from '~/components/tables'
 
-import { BasicTableProps } from './type'
+import { SortableTableProps } from './type'
 
-export const BasicTable = <T,>(props: BasicTableProps<T>) => {
+export const SortableTable = <T,>(props: SortableTableProps<T>) => {
   const {
     columns,
     data = [],
@@ -21,6 +24,7 @@ export const BasicTable = <T,>(props: BasicTableProps<T>) => {
     isLoading,
     pageCount,
     totalData,
+    setSorting,
     setPagination
   } = props
   const [globalFilter, setGlobalFilter] = useState<string>('')
@@ -29,6 +33,7 @@ export const BasicTable = <T,>(props: BasicTableProps<T>) => {
     data,
     state: {
       pagination: state?.pagination,
+      sorting: state?.sorting,
       globalFilter
     },
     pageCount,
@@ -36,11 +41,12 @@ export const BasicTable = <T,>(props: BasicTableProps<T>) => {
     getFilteredRowModel: getFilteredRowModel(),
     onPaginationChange: setPagination,
     onGlobalFilterChange: setGlobalFilter,
-    manualPagination: true
+    onSortingChange: setSorting,
+    manualPagination: true,
+    manualSorting: true
   })
 
   const hasData = data.length > 0
-
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between">
@@ -60,14 +66,44 @@ export const BasicTable = <T,>(props: BasicTableProps<T>) => {
                     <th
                       key={header.id}
                       colSpan={header.colSpan}
-                      className="p-4"
+                      className="p-2"
                     >
                       {header.isPlaceholder ? null : (
-                        <div>
+                        <div
+                          className={
+                            header.column.getCanSort()
+                              ? 'flex cursor-pointer select-none items-center'
+                              : ''
+                          }
+                          onClick={header.column.getToggleSortingHandler()}
+                          title={
+                            header.column.getCanSort()
+                              ? (() => {
+                                  const nextOrder =
+                                    header.column.getNextSortingOrder()
+                                  if (nextOrder === 'asc')
+                                    return 'Sort ascending'
+                                  if (nextOrder === 'desc')
+                                    return 'Sort descending'
+                                  return 'Clear sort'
+                                })()
+                              : undefined
+                          }
+                        >
                           {flexRender(
                             header.column.columnDef.header,
                             header.getContext()
                           )}
+                          {header.column.getIsSorted() === 'desc' && (
+                            <BiSortUp className="ml-1" />
+                          )}
+                          {header.column.getIsSorted() === 'asc' && (
+                            <BiSortDown className="ml-1" />
+                          )}
+                          {!header.column.getIsSorted() &&
+                            header.column.getCanSort() && (
+                              <BiSortDown className="ml-1 text-[#D1D5DB]" />
+                            )}
                         </div>
                       )}
                     </th>

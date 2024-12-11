@@ -1,5 +1,5 @@
 import { PersonParams } from '~/schemas'
 
 export const keyFactory = {
-  cart: (params: PersonParams) => ['cart', params] as const
+  person: (params: PersonParams) => ['person', params] as const
 }

@@ -6,7 +6,6 @@ import {
   SetStateAction,
   useContext,
   useEffect,
-  useLayoutEffect,
   useState
 } from 'react'
 import { useWindowSize } from 'usehooks-ts'
@@ -39,7 +38,7 @@ const LayoutProvider: FC<PropsWithChildren> = ({ children }) => {
     setShowMobileSidebar((prev) => !prev)
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!width) {
       setContainerWidth('100%')
     }
