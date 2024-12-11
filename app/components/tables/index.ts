@@ -1,5 +1,7 @@
 export * from './basic-table'
 export * from './sortable-table'
+export * from './selectable-table'
 export * from './row-per-page'
 export * from './search'
 export * from './pagination'
+export * from './indeterminate-checkbox'

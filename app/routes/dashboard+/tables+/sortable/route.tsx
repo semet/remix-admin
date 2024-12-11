@@ -14,10 +14,10 @@ export const meta: MetaFunction = () => {
   ]
 }
 
-const BlankPage = () => {
+const SortableTablePage = () => {
   return (
     <PaginationProvider>
-      <PageTitle title="Basic Table" />
+      <PageTitle title="Sortable Table" />
       <PageContainer className="space-y-4">
         <Content />
       </PageContainer>
@@ -25,4 +25,4 @@ const BlankPage = () => {
   )
 }
 
-export default BlankPage
+export default SortableTablePage

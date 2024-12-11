@@ -1,6 +1,9 @@
 import { MetaFunction } from '@remix-run/react'
 
+import { PaginationProvider } from '~/contexts'
 import { PageContainer, PageTitle } from '~/layouts/dashboard'
+
+import { Content } from './content'
 
 export const meta: MetaFunction = () => {
   return [
@@ -11,15 +14,15 @@ export const meta: MetaFunction = () => {
   ]
 }
 
-const BlankPage = () => {
+const SelectableTablePage = () => {
   return (
-    <>
+    <PaginationProvider>
       <PageTitle title="Selectable Table" />
       <PageContainer className="space-y-4">
-        <></>
+        <Content />
       </PageContainer>
-    </>
+    </PaginationProvider>
   )
 }
 
-export default BlankPage
+export default SelectableTablePage
