@@ -15,5 +15,5 @@ export type Person = {
 export type PersonParams = {
   pageIndex: number
   pageSize: number
-  sorting: SortingState
+  sorting?: SortingState
 }

@@ -49,7 +49,7 @@ export async function fetchData(options: PersonParams) {
 
   const { sorting } = options
 
-  if (sorting?.length > 0) {
+  if (sorting && sorting.length > 0) {
     const sortingType = sorting[0]?.desc ? -1 : 1
     const sortBy = sorting[0]?.id
 
