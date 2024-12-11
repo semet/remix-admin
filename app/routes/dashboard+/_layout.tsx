@@ -9,9 +9,11 @@ import {
 
 const DashboardLayout = () => {
   return (
-    <div className="flex h-screen overflow-hidden">
-      <Sidebar />
-      <MobileSidebar />
+    <div className="flex min-h-screen">
+      <div className="bg-primary">
+        <Sidebar />
+        <MobileSidebar />
+      </div>
       <div className="flex flex-1 flex-col">
         <Header />
         <ContentWrapper>

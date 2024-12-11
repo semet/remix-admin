@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 html {
-  scroll-behavior: smooth;
+  @apply scroll-smooth scrollbar-thin scrollbar-track-white scrollbar-thumb-black/40;
 }
 
 .ProseMirror {
