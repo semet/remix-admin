@@ -80,7 +80,7 @@ export const SidePanel: FC<Props> = (props) => {
                   transition: { duration: 0.5, type: 'spring', bounce: 0 }
                 }}
                 className={twMerge([
-                  'relative h-screen overflow-hidden bg-white',
+                  'relative h-screen w-full overflow-hidden bg-white',
                   panelClassName
                 ])}
               >

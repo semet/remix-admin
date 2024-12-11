@@ -48,7 +48,7 @@ export const Textarea = <T extends Record<string, unknown>>(
         id={id ?? generatedId}
         {...register(name, rules)}
         className={twMerge([
-          'overflow-hidden rounded-sm text-slate-600 focus:border-info focus:ring-0',
+          'overflow-hidden rounded text-slate-600 focus:border-info focus:ring-0',
           error ? 'border-danger' : 'border-slate-300',
           className
         ])}

@@ -61,8 +61,8 @@ const ButtonPage = () => {
               <Button
                 key={variant}
                 variant={variant}
+                icon={Icon}
               >
-                {<Icon className="mr-2" />}
                 {variant}
               </Button>
             )

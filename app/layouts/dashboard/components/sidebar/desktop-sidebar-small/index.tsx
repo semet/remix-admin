@@ -51,7 +51,7 @@ export const DesktopSidebarSmall: FC<Props> = ({
                 }}
                 exit={{ scale: 0.5, opacity: 0, transition: { duration: 0.1 } }}
                 anchor="right start"
-                className="-mt-2 ml-2 flex min-w-[200px] flex-col gap-2 rounded-sm bg-primary p-4 shadow-[0px_4px_12px_rgba(0,0,0,0.1)]"
+                className="-mt-2 ml-2 flex min-w-[200px] flex-col gap-2 rounded bg-primary p-4 shadow-[0px_4px_12px_rgba(0,0,0,0.1)]"
               >
                 <div className="flex w-full items-center justify-between text-sm text-white">
                   <span>{name}</span>

@@ -83,7 +83,7 @@ export const DragAndDrop = <T extends Record<string, unknown>>(
             <div
               {...getRootProps()}
               className={twMerge([
-                'flex flex-col items-center justify-center rounded-sm border border-dashed bg-slate-50 px-4 py-6 focus-within:border-dashed focus-within:border-info',
+                'flex flex-col items-center justify-center rounded border border-dashed bg-slate-50 px-4 py-6 focus-within:border-dashed focus-within:border-info',
                 error
                   ? 'border-danger focus-within:border-danger'
                   : 'border-slate-400'

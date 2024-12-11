@@ -1,7 +1,8 @@
 export type Person = {
   id: number
   firstName: string
-  lastName: string
+  lastName?: string
+  email: string
   age: number
   visits: number
   progress: number

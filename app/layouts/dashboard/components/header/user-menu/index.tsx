@@ -26,7 +26,7 @@ export const UserMenu = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -4 }}
                 anchor="bottom"
-                className="z-50 mt-1 flex w-32 origin-top flex-col rounded-sm bg-slate-50 p-4 shadow-md"
+                className="z-50 mt-1 flex w-32 origin-top flex-col rounded bg-slate-50 p-4 shadow-md"
               >
                 <ul className="flex flex-col space-y-4">
                   <li>

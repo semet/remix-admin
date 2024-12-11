@@ -85,7 +85,7 @@ export const AdvanceSelect = <T extends Record<string, unknown>>(
                 styles={{
                   control: (base, { isFocused }) => ({
                     ...base,
-                    borderRadius: '.125rem',
+                    borderRadius: '0.25rem',
                     boxShadow: 'none',
                     borderColor: error
                       ? '#f06548'
@@ -95,16 +95,12 @@ export const AdvanceSelect = <T extends Record<string, unknown>>(
                     height: isMulti
                       ? 'auto'
                       : size === 'sm'
-                        ? '2rem'
+                        ? '32px'
                         : size === 'md'
-                          ? '2.5rem'
-                          : '3rem',
+                          ? '43px'
+                          : '48px',
                     minHeight:
-                      size === 'sm'
-                        ? '2rem'
-                        : size === 'md'
-                          ? '2.5rem'
-                          : '3rem',
+                      size === 'sm' ? '32px' : size === 'md' ? '43px' : '48px',
                     fontSize:
                       size === 'sm'
                         ? '0.75rem'

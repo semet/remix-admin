@@ -10,6 +10,11 @@ export default {
       fontFamily: {
         sans: ['Poppins', 'sans-serif']
       },
+      spacing: {
+        sm: '32px',
+        md: '43px',
+        lg: '48px'
+      },
       colors: {
         primary: {
           DEFAULT: '#405189',

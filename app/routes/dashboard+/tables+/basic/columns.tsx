@@ -20,6 +20,11 @@ export const columns: ColumnDef<Person>[] = [
     cell: (props) => props.getValue()
   },
   {
+    header: 'Email',
+    accessorKey: 'email',
+    cell: (props) => props.getValue()
+  },
+  {
     header: 'Age',
     accessorKey: 'age',
     cell: (props) => props.getValue()

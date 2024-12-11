@@ -18,6 +18,7 @@ const newPerson = (): Person => {
     id: idCounter++, // Increment the ID for each new person
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
+    email: faker.internet.email(),
     age: faker.number.int(40),
     visits: faker.number.int(1000),
     progress: faker.number.int(100),

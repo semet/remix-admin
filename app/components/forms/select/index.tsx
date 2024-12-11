@@ -54,11 +54,11 @@ export const Select = <T extends Record<string, unknown>>(
       <select
         id={id ?? generatedId}
         className={twMerge([
-          'flex overflow-hidden rounded-sm text-slate-600 focus:border-info focus:ring-0',
+          'flex overflow-hidden rounded text-slate-600 focus:border-info focus:ring-0',
           error ? 'border-danger' : 'border-slate-300',
-          size === 'sm' && 'h-8 text-xs',
-          size === 'md' && 'h-10 text-sm',
-          size === 'lg' && 'h-12 text-lg',
+          size === 'sm' && 'h-sm text-xs',
+          size === 'md' && 'h-md text-sm',
+          size === 'lg' && 'h-lg text-lg',
           className
         ])}
         {...register(name, rules)}

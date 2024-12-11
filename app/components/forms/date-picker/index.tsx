@@ -72,11 +72,11 @@ export const DatePicker = <T extends Record<string, unknown>>(
                 value={field.value}
                 dateFormat="dd/MM/y"
                 className={twMerge(
-                  'mt-1 w-full items-center rounded-sm pl-8 text-slate-600 focus:border-info focus:ring-0',
+                  'mt-1 w-full items-center rounded pl-8 text-slate-600 focus:border-info focus:ring-0',
                   error ? 'border-danger' : 'border-slate-300',
-                  size === 'sm' && 'h-8 text-xs',
-                  size === 'md' && 'h-10 text-sm',
-                  size === 'lg' && 'h-12 text-lg',
+                  size === 'sm' && 'h-sm text-xs',
+                  size === 'md' && 'h-md text-sm',
+                  size === 'lg' && 'h-lg text-lg',
                   className
                 )}
                 selected={field.value ? new Date(field.value) : selected}

@@ -56,10 +56,10 @@ export const Input = <T extends Record<string, unknown>>(
       )}
       <div
         className={twMerge([
-          'flex overflow-hidden rounded-sm border has-[:focus]:border-info',
-          size === 'sm' && 'h-8',
-          size === 'md' && 'h-10',
-          size === 'lg' && 'h-12',
+          'flex overflow-hidden rounded border has-[:focus]:border-info',
+          size === 'sm' && 'h-sm',
+          size === 'md' && 'h-md',
+          size === 'lg' && 'h-lg',
           error ? 'border-danger' : 'border-slate-300'
         ])}
       >
@@ -68,7 +68,7 @@ export const Input = <T extends Record<string, unknown>>(
           type={type}
           id={id ?? generatedId}
           className={twMerge([
-            'w-full rounded-sm border-none text-slate-600 focus:ring-0',
+            'w-full rounded border-none text-slate-600 focus:ring-0',
             size === 'sm' && 'text-xs',
             size === 'md' && 'text-sm',
             size === 'lg' && 'text-lg',

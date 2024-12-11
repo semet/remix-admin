@@ -40,7 +40,7 @@ export const Checkbox = <T extends Record<string, unknown>>(
         id={id ?? generatedId}
         type={type}
         className={twMerge([
-          'h-8 w-8 cursor-pointer rounded-sm text-slate-600 ring-0 focus:ring-0 disabled:cursor-not-allowed disabled:opacity-80',
+          'h-8 w-8 cursor-pointer rounded text-slate-600 ring-0 focus:ring-0 disabled:cursor-not-allowed disabled:opacity-80',
           size === 'sm' && 'h-4 w-4',
           size === 'md' && 'h-6 w-6',
           size === 'lg' && 'h-8 w-8',

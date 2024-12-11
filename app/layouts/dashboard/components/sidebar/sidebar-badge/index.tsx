@@ -12,7 +12,7 @@ export const SidebarBadge: FC<Props> = ({ badge, variant }) => {
   return (
     <span
       className={twMerge([
-        'content-center rounded-sm px-2 py-0.5 text-xs font-light',
+        'content-center rounded px-2 py-0.5 text-xs font-light',
         variant === 'success' && 'bg-success-50 text-white',
         variant === 'error' && 'bg-danger-50 text-white',
         variant === 'warning' && 'bg-warning-50 text-white',

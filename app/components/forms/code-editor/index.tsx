@@ -60,7 +60,7 @@ export const CodeEditor = <T extends Record<string, unknown>>(
               value={field.value}
               onChange={field.onChange}
               className={twMerge([
-                'w-full rounded-sm border py-4 focus-within:border-info',
+                'w-full rounded border py-4 focus-within:border-info',
                 className
               ])}
               options={{

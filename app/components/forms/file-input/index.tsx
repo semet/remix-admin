@@ -53,11 +53,11 @@ export const FileInput = <T extends Record<string, unknown>>(
       )}
       <div
         className={twMerge([
-          'relative flex h-[2.65rem] overflow-hidden rounded-sm border border-slate-300 focus-within:border-info has-[:disabled]:bg-slate-100',
+          'relative flex h-[2.65rem] overflow-hidden rounded border border-slate-300 focus-within:border-info has-[:disabled]:bg-slate-100',
           error ? 'border-danger' : 'border-slate-300',
-          size === 'sm' && 'h-8',
-          size === 'md' && 'h-10',
-          size === 'lg' && 'h-12',
+          size === 'sm' && 'h-sm',
+          size === 'md' && 'h-md',
+          size === 'lg' && 'h-lg',
           className
         ])}
       >

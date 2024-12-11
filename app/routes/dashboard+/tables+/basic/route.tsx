@@ -4,6 +4,7 @@ import { PaginationProvider } from '~/contexts'
 import { PageContainer, PageTitle } from '~/layouts/dashboard'
 
 import { Content } from './content'
+import { Toolbar } from './toolbar'
 
 export const meta: MetaFunction = () => {
   return [
@@ -19,6 +20,7 @@ const BlankPage = () => {
     <PaginationProvider>
       <PageTitle title="Basic Table" />
       <PageContainer className="space-y-4">
+        <Toolbar />
         <Content />
       </PageContainer>
     </PaginationProvider>
