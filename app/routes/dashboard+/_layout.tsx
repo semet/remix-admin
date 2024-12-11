@@ -6,7 +6,7 @@ import {
   Header,
   MobileSidebar,
   ScrollToTop,
-  Sidebar
+  SidebarContainer
 } from '~/layouts/dashboard'
 
 const DashboardLayout = () => {
@@ -14,7 +14,7 @@ const DashboardLayout = () => {
   return (
     <div className="flex min-h-screen">
       <div className="bg-primary">
-        <Sidebar />
+        <SidebarContainer />
         <MobileSidebar />
       </div>
       <div

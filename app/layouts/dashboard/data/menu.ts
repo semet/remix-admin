@@ -143,16 +143,6 @@ export const menus: Menu[] = [
         href: '/dashboard/tables/selectable'
       },
       {
-        id: 27,
-        name: 'Draggable',
-        href: '/dashboard/tables/draggable'
-      },
-      {
-        id: 28,
-        name: 'Editable',
-        href: '/dashboard/tables/editable'
-      },
-      {
         id: 29,
         name: 'Expandable',
         href: '/dashboard/tables/expandable'

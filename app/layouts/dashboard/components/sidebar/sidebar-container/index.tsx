@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { useLayout } from '~/contexts'
 import { Logo, SidebarContent } from '~/layouts/dashboard'
 
-export const Sidebar = () => {
+export const SidebarContainer = () => {
   const { desktopSidebarExpanded } = useLayout()
   return (
     <motion.aside
