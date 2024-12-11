@@ -6,6 +6,7 @@ import {
   SetStateAction,
   useContext,
   useEffect,
+  useLayoutEffect,
   useState
 } from 'react'
 import { useWindowSize } from 'usehooks-ts'
@@ -18,6 +19,7 @@ type LayoutContextType = {
   setShowMobileSidebar: Dispatch<SetStateAction<boolean>>
   toggleMobileSidebar: () => void
   windowWidth: number
+  containerWidth: string
 }
 
 const LayoutContext = createContext<LayoutContextType | undefined>(undefined)
@@ -28,7 +30,7 @@ const LayoutProvider: FC<PropsWithChildren> = ({ children }) => {
   const [desktopSidebarExpanded, setDesktopSidebarExpanded] =
     useState<boolean>(true)
   const [showMobileSidebar, setShowMobileSidebar] = useState<boolean>(false)
-
+  const [containerWidth, setContainerWidth] = useState<string>('100%')
   const toggleDesktopSidebar = () => {
     setDesktopSidebarExpanded((prev) => !prev)
   }
@@ -37,6 +39,16 @@ const LayoutProvider: FC<PropsWithChildren> = ({ children }) => {
     setShowMobileSidebar((prev) => !prev)
   }
 
+  useLayoutEffect(() => {
+    if (!width) {
+      setContainerWidth('100%')
+    }
+    if (width && width < 767) {
+      setContainerWidth('100%')
+    } else {
+      setContainerWidth(`calc(100% - ${desktopSidebarExpanded ? 250 : 70}px)`)
+    }
+  }, [width, desktopSidebarExpanded])
   useEffect(() => {
     if (typeof window === 'undefined') return
     if (width && width < 1024) {
@@ -53,7 +65,8 @@ const LayoutProvider: FC<PropsWithChildren> = ({ children }) => {
     showMobileSidebar,
     setShowMobileSidebar,
     toggleMobileSidebar,
-    windowWidth: width
+    windowWidth: width,
+    containerWidth
   }
 
   return (

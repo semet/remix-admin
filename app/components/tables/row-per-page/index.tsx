@@ -24,7 +24,7 @@ export const RowPerPage = <T,>({ table }: PageSizeProps<T>) => {
   return (
     <FormProvider {...formMethods}>
       <form className="flex items-center gap-2">
-        <span className="text-sm text-slate-500">showing</span>
+        <span className="hidden text-sm text-slate-500 sm:inline">showing</span>
         <Select<PageSizeFilter>
           name="pageSize"
           size="sm"
@@ -35,7 +35,7 @@ export const RowPerPage = <T,>({ table }: PageSizeProps<T>) => {
             { label: '100', value: 100 }
           ]}
         />
-        <span className="text-sm text-slate-500">entries</span>
+        <span className="hidden text-sm text-slate-500 sm:inline">entries</span>
       </form>
     </FormProvider>
   )
