@@ -158,7 +158,7 @@ export const menus: Menu[] = [
     id: 34,
     name: 'Charts',
     icon: RiPieChart2Line,
-    href: '/charts'
+    href: '/dashboard/charts'
   },
   {
     id: 35,
