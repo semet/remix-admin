@@ -5,6 +5,9 @@ export type ExpandableTableProps<T> = {
   isLoading?: boolean
   data?: T[]
   columns: ColumnDef<T, unknown>[]
+  showFooter?: boolean
+  stripped?: boolean
+  hovered?: boolean
   state: {
     pagination: PaginationState
   }

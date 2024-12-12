@@ -21,6 +21,9 @@ export const InfiniteScrollTable = <T,>(props: InfiniteScrollTableProps<T>) => {
     columns,
     data = [],
     state,
+    showFooter = false,
+    stripped = false,
+    hovered = true,
     isLoading,
     isFetchingNextPage,
     pageCount,
@@ -60,7 +63,7 @@ export const InfiniteScrollTable = <T,>(props: InfiniteScrollTableProps<T>) => {
             {table.getHeaderGroups().map((headerGroup) => (
               <tr
                 key={headerGroup.id}
-                className="border-b border-gray-200 text-left text-sm font-semibold text-slate-600"
+                className="border-b border-slate-200 text-left text-sm font-semibold text-slate-600"
               >
                 {headerGroup.headers.map((header) => {
                   return (
@@ -115,29 +118,57 @@ export const InfiniteScrollTable = <T,>(props: InfiniteScrollTableProps<T>) => {
           </thead>
           <AnimatePresence mode="wait">
             {hasData && !isLoading ? (
-              <tbody>
-                {table.getRowModel().rows.map((row) => (
-                  <motion.tr
-                    key={row.id}
-                    className={twMerge([
-                      'border-b border-gray-200 text-sm text-slate-500 hover:bg-gray-100',
-                      state?.pagination ? 'last:border-b' : 'last:border-b-0'
-                    ])}
-                  >
-                    {row.getVisibleCells().map((cell) => (
-                      <td
-                        key={cell.id}
-                        className="p-4"
+              <>
+                <tbody>
+                  {table.getRowModel().rows.map((row) => (
+                    <motion.tr
+                      key={row.id}
+                      className={twMerge([
+                        'border-b border-slate-200 text-sm text-slate-500',
+                        hovered && 'hover:bg-slate-100',
+                        stripped && 'odd:bg-slate-100',
+                        state?.pagination ? 'last:border-b' : 'last:border-b-0'
+                      ])}
+                    >
+                      {row.getVisibleCells().map((cell) => (
+                        <td
+                          key={cell.id}
+                          className="p-4"
+                        >
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </td>
+                      ))}
+                    </motion.tr>
+                  ))}
+                </tbody>
+                {showFooter && (
+                  <tfoot>
+                    {table.getFooterGroups().map((footerGroup) => (
+                      <tr
+                        key={footerGroup.id}
+                        className="border-b border-slate-200 text-left text-sm font-semibold text-slate-500"
                       >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </td>
+                        {footerGroup.headers.map((header) => (
+                          <th
+                            key={header.id}
+                            className="p-4"
+                          >
+                            {header.isPlaceholder
+                              ? null
+                              : flexRender(
+                                  header.column.columnDef.footer,
+                                  header.getContext()
+                                )}
+                          </th>
+                        ))}
+                      </tr>
                     ))}
-                  </motion.tr>
-                ))}
-              </tbody>
+                  </tfoot>
+                )}
+              </>
             ) : (
               <>
                 {isLoading ? (

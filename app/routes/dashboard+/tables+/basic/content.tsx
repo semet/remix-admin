@@ -25,6 +25,9 @@ export const Content = () => {
         state={{ pagination }}
         isLoading={isLoading || isRefetching}
         setPagination={setPagination}
+        showFooter
+        stripped
+        hovered
       />
     </Card>
   )

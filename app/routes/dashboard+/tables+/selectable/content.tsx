@@ -49,6 +49,7 @@ export const Content = () => {
         setPagination={setPagination}
         setSorting={setSorting}
         setRowSelection={setRowSelection}
+        hovered
       />
     </Card>
   )

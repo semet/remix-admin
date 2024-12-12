@@ -6,6 +6,9 @@ export type InfiniteScrollTableProps<T> = {
   isFetchingNextPage?: boolean
   data?: T[]
   columns: ColumnDef<T, unknown>[]
+  showFooter?: boolean
+  stripped?: boolean
+  hovered?: boolean
   state: {
     pagination?: PaginationState
     sorting: SortingState

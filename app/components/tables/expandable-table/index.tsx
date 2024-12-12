@@ -19,6 +19,9 @@ export const ExpandableTable = <T,>(props: ExpandableTableProps<T>) => {
     columns,
     data = [],
     state,
+    showFooter = false,
+    stripped = false,
+    hovered = false,
     isLoading,
     pageCount,
     totalData,
@@ -58,7 +61,7 @@ export const ExpandableTable = <T,>(props: ExpandableTableProps<T>) => {
             {table.getHeaderGroups().map((headerGroup) => (
               <tr
                 key={headerGroup.id}
-                className="border-b border-gray-200 text-left text-sm font-semibold text-slate-600"
+                className="border-b border-slate-200 text-left text-sm font-semibold text-slate-600"
               >
                 {headerGroup.headers.map((header) => {
                   return (
@@ -83,55 +86,83 @@ export const ExpandableTable = <T,>(props: ExpandableTableProps<T>) => {
           </thead>
           <AnimatePresence mode="wait">
             {hasData && !isLoading ? (
-              <tbody>
-                {table.getRowModel().rows.map((row) => {
-                  return (
-                    <Fragment key={row.id}>
-                      <motion.tr
-                        key={row.id}
-                        className={twMerge([
-                          'border-b border-gray-200 text-sm text-slate-500 hover:bg-gray-100',
-                          state?.pagination
-                            ? 'last:border-b'
-                            : 'last:border-b-0'
-                        ])}
-                      >
-                        {row.getVisibleCells().map((cell) => {
-                          return (
-                            <td
-                              key={cell.id}
-                              className="p-4"
+              <>
+                <tbody>
+                  {table.getRowModel().rows.map((row) => {
+                    return (
+                      <Fragment key={row.id}>
+                        <motion.tr
+                          key={row.id}
+                          className={twMerge([
+                            'border-b border-slate-200 text-sm text-slate-500',
+                            hovered && 'hover:bg-slate-100',
+                            stripped && 'odd:bg-slate-100',
+                            state?.pagination
+                              ? 'last:border-b'
+                              : 'last:border-b-0'
+                          ])}
+                        >
+                          {row.getVisibleCells().map((cell) => {
+                            return (
+                              <td
+                                key={cell.id}
+                                className="p-4"
+                              >
+                                {flexRender(
+                                  cell.column.columnDef.cell,
+                                  cell.getContext()
+                                )}
+                              </td>
+                            )
+                          })}
+                        </motion.tr>
+                        <AnimatePresence>
+                          {row.getIsExpanded() && (
+                            <motion.tr
+                              initial={{ y: -10, opacity: 0 }}
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                                transition: { duration: 0.2, type: 'tween' }
+                              }}
+                              exit={{ y: -10, opacity: 0 }}
                             >
-                              {flexRender(
-                                cell.column.columnDef.cell,
-                                cell.getContext()
-                              )}
-                            </td>
-                          )
-                        })}
-                      </motion.tr>
-                      <AnimatePresence>
-                        {row.getIsExpanded() && (
-                          <motion.tr
-                            initial={{ y: -10, opacity: 0 }}
-                            animate={{
-                              y: 0,
-                              opacity: 1,
-                              transition: { duration: 0.2, type: 'tween' }
-                            }}
-                            exit={{ y: -10, opacity: 0 }}
+                              {/* 2nd row is a custom 1 cell row */}
+                              <td colSpan={row.getVisibleCells().length}>
+                                {renderSubComponent({ row })}
+                              </td>
+                            </motion.tr>
+                          )}
+                        </AnimatePresence>
+                      </Fragment>
+                    )
+                  })}
+                </tbody>
+                {showFooter && (
+                  <tfoot>
+                    {table.getFooterGroups().map((footerGroup) => (
+                      <tr
+                        key={footerGroup.id}
+                        className="border-b border-slate-200 text-left text-sm font-semibold text-slate-500"
+                      >
+                        {footerGroup.headers.map((header) => (
+                          <th
+                            key={header.id}
+                            className="p-4"
                           >
-                            {/* 2nd row is a custom 1 cell row */}
-                            <td colSpan={row.getVisibleCells().length}>
-                              {renderSubComponent({ row })}
-                            </td>
-                          </motion.tr>
-                        )}
-                      </AnimatePresence>
-                    </Fragment>
-                  )
-                })}
-              </tbody>
+                            {header.isPlaceholder
+                              ? null
+                              : flexRender(
+                                  header.column.columnDef.footer,
+                                  header.getContext()
+                                )}
+                          </th>
+                        ))}
+                      </tr>
+                    ))}
+                  </tfoot>
+                )}
+              </>
             ) : (
               <>
                 {isLoading ? (

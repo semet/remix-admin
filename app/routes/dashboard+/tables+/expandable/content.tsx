@@ -29,6 +29,7 @@ export const Content = () => {
         setPagination={setPagination}
         renderSubComponent={renderSubComponent}
         getRowCanExpand={() => true}
+        hovered
       />
     </Card>
   )

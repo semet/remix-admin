@@ -27,6 +27,7 @@ export const Content = () => {
         isLoading={isLoading || isRefetching}
         setPagination={setPagination}
         setSorting={setSorting}
+        stripped
       />
     </Card>
   )
