@@ -73,7 +73,7 @@ export const Toolbar: FC<{
 
   if (!editor) return null
   return (
-    <div className="rounded-t-sm border-x border-b border-t bg-white p-4">
+    <div className="rounded-t border-x border-b border-t bg-white p-4">
       <div className="flex flex-wrap items-center gap-2">
         <EditorButton
           title="Undo"

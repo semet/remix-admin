@@ -7,7 +7,7 @@ html {
 }
 
 .ProseMirror {
-  @apply prose-lg w-full rounded-b-sm border px-4 text-base text-slate-600 focus-within:outline-none !important;
+  @apply prose-lg w-full rounded-b border px-4 text-base text-slate-600 focus-within:outline-none !important;
 }
 .ProseMirror-focused {
   @apply border border-slate-400 focus-within:outline-none !important;
