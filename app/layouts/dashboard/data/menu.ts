@@ -168,22 +168,17 @@ export const menus: Menu[] = [
       {
         id: 36,
         name: 'Sign In',
-        href: '/pages/sign-in'
+        href: '/login'
       },
       {
         id: 37,
         name: 'Sign Up',
-        href: '/pages/sign-up'
+        href: '/register'
       },
       {
         id: 38,
-        name: 'Forgot Password',
-        href: '/pages/forgot-password'
-      },
-      {
-        id: 39,
         name: 'Reset Password',
-        href: '/pages/reset-password'
+        href: '/reset-password'
       },
       {
         id: 40,

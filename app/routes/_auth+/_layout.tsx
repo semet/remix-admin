@@ -27,13 +27,12 @@ const AuthLayout = () => {
         </div>
       </div>
 
-      {/* Foreground */}
-      <div className="absolute left-1/2 top-[45%] z-10 flex h-screen -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center gap-6">
+      <div className="absolute left-1/2 top-[45%] z-10 flex h-screen w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center justify-center gap-6 px-6 sm:w-[500px]">
         <img
           src="/images/logo-lg.png"
           alt="Logo"
         />
-        <div className="w-[450px] rounded bg-white px-8 py-6 shadow">
+        <div className="w-full rounded bg-white p-4 shadow sm:px-8 sm:py-6">
           <Outlet />
         </div>
       </div>
