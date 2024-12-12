@@ -64,7 +64,10 @@ export default function App() {
       <LayoutProvider>
         <Outlet />
       </LayoutProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryDevtools
+        initialIsOpen={false}
+        buttonPosition="bottom-left"
+      />
     </QueryClientProvider>
   )
 }

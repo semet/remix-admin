@@ -47,7 +47,7 @@ export async function fetchData(options: PersonParams) {
   // Simulate some network latency
   await new Promise((r) => setTimeout(r, 500))
 
-  const { sorting } = options
+  const { sorting, pageParam = 0, pageSize } = options
 
   if (sorting && sorting.length > 0) {
     const sortingType = sorting[0]?.desc ? -1 : 1
@@ -71,12 +71,15 @@ export async function fetchData(options: PersonParams) {
     }
   }
 
+  const startIndex = pageParam * pageSize
+  const endIndex = startIndex + pageSize
+
+  const rows = data.slice(startIndex, endIndex)
+
   return {
-    rows: data.slice(
-      options.pageIndex * options.pageSize,
-      (options.pageIndex + 1) * options.pageSize
-    ),
-    pageCount: Math.ceil(data.length / options.pageSize),
+    rows,
+    nextPage: endIndex < data.length ? pageParam + 1 : null, // Indicate if more pages are available
+    pageCount: Math.ceil(data.length / pageSize),
     rowCount: data.length
   }
 }
