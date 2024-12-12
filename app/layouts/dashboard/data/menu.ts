@@ -183,12 +183,7 @@ export const menus: Menu[] = [
       {
         id: 40,
         name: '404',
-        href: '/pages/404'
-      },
-      {
-        id: 41,
-        name: '500',
-        href: '/pages/500'
+        href: '/random-non-existing-page'
       }
     ]
   },
