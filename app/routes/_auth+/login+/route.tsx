@@ -21,13 +21,22 @@ const LoginPage = () => {
     },
     resolver: zodResolver(loginSchema)
   })
+  const { handleSubmit } = formMethods
+
+  const onSubmit = handleSubmit((data) => {
+    // eslint-disable-next-line no-console
+    console.log(data)
+  })
   return (
     <FormProvider {...formMethods}>
       <div className="flex flex-col gap-6">
         <h2 className="text-center text-lg font-semibold text-slate-600">
           Welcome Back
         </h2>
-        <form className="flex flex-col gap-4">
+        <form
+          onSubmit={onSubmit}
+          className="flex flex-col gap-4"
+        >
           <Input<LoginInput>
             name="email"
             label="Email"
