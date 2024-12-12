@@ -1,10 +1,20 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { MetaFunction } from '@remix-run/react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { Button } from '~/components/base-ui'
 import { Input } from '~/components/forms'
 
 import { RegisterInput, registerSchema } from './schema'
+
+export const meta: MetaFunction = () => {
+  return [
+    {
+      title: 'Register',
+      description: 'Register page'
+    }
+  ]
+}
 
 const RegisterPage = () => {
   const formMethods = useForm<RegisterInput>({

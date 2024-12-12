@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
 import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
@@ -10,6 +11,15 @@ import { Checkbox, Input } from '~/components/forms'
 
 import { otherSignIns } from './data'
 import { LoginInput, loginSchema } from './schema'
+
+export const meta: MetaFunction = () => {
+  return [
+    {
+      title: 'Login',
+      description: 'Login page'
+    }
+  ]
+}
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false)

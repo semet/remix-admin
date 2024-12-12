@@ -1,10 +1,20 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { MetaFunction } from '@remix-run/react'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import { Alert, Button } from '~/components/base-ui'
 import { Input } from '~/components/forms'
 
 import { ResetPasswordInput, resetPasswordSchema } from './schema'
+
+export const meta: MetaFunction = () => {
+  return [
+    {
+      title: 'Reset Password',
+      description: 'Reset Password page'
+    }
+  ]
+}
 
 const ResetPasswordPage = () => {
   const formMethods = useForm<ResetPasswordInput>({
