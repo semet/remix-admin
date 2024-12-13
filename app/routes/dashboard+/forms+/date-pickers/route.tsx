@@ -47,7 +47,7 @@ const DatePickerPage = () => {
               <span className="font-semibold text-slate-600">
                 Basic Example
               </span>
-              <div className="mb-4 flex gap-2">
+              <div className="mb-4 flex flex-col gap-2 sm:flex-row">
                 <DatePicker<DateFormInput>
                   name="startDate"
                   label="Start Date"
@@ -60,7 +60,7 @@ const DatePickerPage = () => {
                 />
               </div>
               <span className="font-semibold text-slate-600">Date Range</span>
-              <div className="flex gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row">
                 <DatePicker<DateFormInput>
                   selected={new Date(watch('startDate'))}
                   name="fromDate"
@@ -80,7 +80,7 @@ const DatePickerPage = () => {
                   endDate={new Date(watch('toDate'))}
                 />
               </div>
-              <div className="mt-6 flex justify-center gap-2">
+              <div className="mt-6 flex flex-col justify-center gap-2 sm:flex-row">
                 <Button
                   type="reset"
                   variant="error"

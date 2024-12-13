@@ -49,7 +49,7 @@ const ToggleSwitchPage = () => {
               onSubmit={onSubmit}
               className="flex flex-col gap-6"
             >
-              <div className="flex gap-6">
+              <div className="flex flex-col gap-6 sm:flex-row">
                 <div className="space-y-4">
                   <span className="font-semibold text-slate-600">
                     Different variant

@@ -1,4 +1,5 @@
 @import './date-picker.css';
+@import './fullcalendar.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

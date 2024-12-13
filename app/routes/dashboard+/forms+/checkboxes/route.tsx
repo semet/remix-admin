@@ -27,7 +27,7 @@ const CheckboxPage = () => {
           title="Checkbox Example"
         >
           <FormProvider {...formMethods}>
-            <form className="flex gap-6">
+            <form className="flex flex-col gap-6 sm:flex-row">
               <div className="space-y-4">
                 <span className="font-semibold text-slate-600">
                   Different variant

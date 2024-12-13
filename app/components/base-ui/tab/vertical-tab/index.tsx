@@ -16,10 +16,10 @@ export const VerticalTab = <Key extends string | number>(
 ) => {
   const { data } = props
   return (
-    <TabGroup className="flex">
+    <TabGroup className="flex flex-col md:flex-row">
       <TabList
         as={motion.div}
-        className="flex w-[20%] flex-col gap-2 overflow-hidden rounded-l border-l bg-primary"
+        className="flex w-full flex-row gap-2 overflow-hidden rounded-t border-l bg-primary md:w-[20%] md:flex-col md:rounded-l md:rounded-r-none"
       >
         {data.map(({ head }) => (
           <HeadlessTab
@@ -39,7 +39,7 @@ export const VerticalTab = <Key extends string | number>(
           </HeadlessTab>
         ))}
       </TabList>
-      <TabPanels className="w-full flex-grow rounded-r border-y border-r">
+      <TabPanels className="w-full flex-grow rounded-b border-x border-b border-r md:rounded-r md:border-x-0 md:border-y md:border-r">
         {data.map(({ panel }) => (
           <TabPanel
             key={panel.key}

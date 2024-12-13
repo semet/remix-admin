@@ -1,0 +1,25 @@
+.fc-button {
+  @apply border-none bg-primary ring-0 hover:bg-primary-100 focus:bg-primary-200 !important;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+  @apply flex flex-col sm:flex-row !important;
+}
+.fc-toolbar-chunk {
+  @apply first:flex first:w-full first:justify-between first:sm:w-fit first:sm:justify-start !important;
+}
+.fc .fc-toolbar-title {
+  @apply text-lg font-semibold text-slate-700 sm:text-2xl !important;
+}
+.fc .fc-col-header-cell-cushion {
+  @apply text-sm font-semibold capitalize text-slate-600 !important;
+}
+.fc .fc-daygrid-day-frame {
+  @apply text-sm text-slate-700 !important;
+}
+.fc .fc-timegrid-axis-cushion {
+  @apply whitespace-nowrap font-semibold text-slate-600 !important;
+}
+.fc .fc-timegrid-axis-cushion,
+.fc .fc-timegrid-slot-label-cushion {
+  @apply flex justify-center text-sm text-slate-600 !important;
+}

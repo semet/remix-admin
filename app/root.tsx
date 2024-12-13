@@ -39,6 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           content="width=device-width, initial-scale=1"
         />
         <Meta />
+        <style data-fullcalendar />
         <Links />
       </head>
       <body className="bg-slate-100">

@@ -46,17 +46,19 @@ const SelectInputPage = () => {
               onSubmit={onSubmit}
               className="flex flex-col gap-2"
             >
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <Select<SelectInput>
                   name="status"
                   label="Status"
                   options={statusOptions}
+                  containerClassName="col-span-2 md:col-span-1"
                 />
                 <AdvanceSelect<SelectInput>
                   name="country"
-                  label="Advance Select (React Select)"
+                  label="Select (React Select)"
                   options={countryOptions}
                   placeholder="Select Country"
+                  containerClassName="col-span-2 md:col-span-1"
                 />
                 <AdvanceSelect<SelectInput>
                   name="grocery"
@@ -64,9 +66,10 @@ const SelectInputPage = () => {
                   isSearchable
                   options={groceryOptions}
                   placeholder="Select Grocery"
+                  containerClassName="col-span-2 md:col-span-1"
                 />
                 <AdvanceSelect<SelectInput>
-                  containerClassName="col-span-2"
+                  containerClassName="col-span-2 md:col-span-1"
                   name="tags"
                   label="Tags Input"
                   isSearchable
@@ -75,7 +78,7 @@ const SelectInputPage = () => {
                   placeholder="Select Tags"
                 />
               </div>
-              <div className="mt-6 flex justify-center gap-2">
+              <div className="mt-6 flex flex-col justify-center gap-2 sm:flex-row">
                 <Button
                   type="reset"
                   variant="error"

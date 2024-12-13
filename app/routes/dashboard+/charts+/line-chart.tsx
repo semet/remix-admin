@@ -26,6 +26,7 @@ export const LineChartExample = () => {
           <LineChart
             data={chartData}
             margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+            className="text-sm"
           >
             <Line
               type="monotone"

@@ -21,10 +21,10 @@ export const Toolbar = () => {
     console.log(data)
   })
   return (
-    <ToolbarContainer className="flex items-end justify-between">
+    <ToolbarContainer className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <FormProvider {...formMethods}>
         <form onSubmit={onSubmit}>
-          <div className="flex items-end gap-4">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end">
             <div className="flex gap-1">
               <DatePicker<FilterForm>
                 name="startDate"

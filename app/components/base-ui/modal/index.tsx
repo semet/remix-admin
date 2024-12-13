@@ -19,8 +19,9 @@ import { Size } from '~/types'
 
 type Props = PropsWithChildren<{
   isOpen: boolean
+  onClose?: () => void
   setIsOpen: Dispatch<SetStateAction<boolean>>
-  button: ReactNode
+  button?: ReactNode
   dialogClassName?: string
   panelClassName?: string
   contentClassName?: string
@@ -33,6 +34,7 @@ export const Modal: FC<Props> = (props) => {
   const {
     isOpen,
     setIsOpen,
+    onClose,
     children,
     button,
     dialogClassName,
@@ -44,13 +46,16 @@ export const Modal: FC<Props> = (props) => {
   } = props
   return (
     <>
-      {button}
+      {button && button}
       <AnimatePresence>
         {isOpen && (
           <Dialog
             static
             open={isOpen}
-            onClose={() => setIsOpen(false)}
+            onClose={() => {
+              setIsOpen(false)
+              return onClose && onClose()
+            }}
             className={twMerge(['relative z-[9999]', dialogClassName])}
           >
             <motion.div
@@ -92,7 +97,10 @@ export const Modal: FC<Props> = (props) => {
                   >
                     {title}
                     <button
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        setIsOpen(false)
+                        return onClose && onClose()
+                      }}
                       className="absolute right-3 top-3 rounded-full p-2 transition-all duration-300 hover:bg-slate-200"
                     >
                       <MdOutlineClose className="text-xl text-slate-500" />
