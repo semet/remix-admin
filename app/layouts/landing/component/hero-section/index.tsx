@@ -47,7 +47,9 @@ export const HeroSection = () => {
               Look into Dashboard
             </Link>
             <Link
-              to=""
+              to="https://github.com/semet/remix-admin"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-slate-400 px-6 py-3"
             >
               <FaGithub className="inline-block text-lg" />
