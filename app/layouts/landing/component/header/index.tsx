@@ -1,4 +1,4 @@
-import { Link } from '@remix-run/react'
+import { Link, NavLink } from '@remix-run/react'
 import { useMotionValueEvent, useScroll } from 'framer-motion'
 import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -30,17 +30,17 @@ export const Header = () => {
         />
       </Link>
       <nav className="content-center">
-        <ul className="flex items-center justify-center">
+        <ul className="hidden items-center justify-center md:flex">
           {landingMenu.map((menu) => (
             <li key={menu.id}>
-              <Link
+              <NavLink
                 to={menu.href}
                 className={twMerge([
                   'px-4 py-2 text-slate-700 hover:text-success'
                 ])}
               >
                 {menu.name}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

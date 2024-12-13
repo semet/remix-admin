@@ -1,11 +1,11 @@
-import { Header, HeroSection } from '~/layouts/landing'
+import { Header, HeroSection, StackSection } from '~/layouts/landing'
 
 const Home = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-clip pb-10">
       <Header />
       <HeroSection />
-      <div className="h-[300vh]"></div>
+      <StackSection />
     </div>
   )
 }
