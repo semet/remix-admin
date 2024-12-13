@@ -6,6 +6,10 @@ html {
   @apply scroll-smooth scrollbar-thin scrollbar-track-white scrollbar-thumb-black/40;
 }
 
+.main-padding {
+  @apply px-6 md:px-10 lg:px-24 xl:px-36;
+}
+
 .ProseMirror {
   @apply prose-lg w-full rounded-b border px-4 text-base text-slate-600 focus-within:outline-none !important;
 }
