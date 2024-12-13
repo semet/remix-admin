@@ -30,13 +30,13 @@ export const Header = () => {
         />
       </Link>
       <nav className="content-center">
-        <ul className="hidden items-center justify-center md:flex">
+        <ul className="flex items-center justify-center">
           {landingMenu.map((menu) => (
             <li key={menu.id}>
               <NavLink
                 to={menu.href}
                 className={twMerge([
-                  'px-4 py-2 text-slate-700 hover:text-success'
+                  'px-2 py-2 text-slate-700 hover:text-success sm:px-4'
                 ])}
               >
                 {menu.name}

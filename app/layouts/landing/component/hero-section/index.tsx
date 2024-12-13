@@ -70,7 +70,7 @@ export const HeroSection = () => {
           </svg>
         </div>
       </div>
-      <div className="absolute left-1/2 mx-auto -mt-48 w-[80%] -translate-x-1/2 transform md:w-1/2">
+      <div className="absolute left-1/2 mx-auto -mt-20 w-[80%] -translate-x-1/2 transform sm:-mt-28 md:-mt-32 md:w-[70%] lg:w-1/2 xl:-mt-48">
         <div className="overflow-hidden rounded-lg shadow-lg">
           <div
             className="absolute -inset-1 -z-10 rounded-lg"
