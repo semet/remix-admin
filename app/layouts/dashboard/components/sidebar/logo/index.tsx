@@ -36,7 +36,7 @@ export const Logo = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ type: 'spring', bounce: 0 }}
-              src="/images/logo-sm.webp"
+              src="/images/logo-sm.png"
               alt="Logo"
               className="h-6 w-6 object-contain"
             />
