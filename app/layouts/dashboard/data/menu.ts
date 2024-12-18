@@ -195,12 +195,23 @@ export const menus: Menu[] = [
   },
   {
     id: 43,
-    name: 'Support',
+    name: 'Advanced UI',
     icon: RiAlignTop,
-    href: '/support'
+    subs: [
+      {
+        id: 44,
+        name: 'Sortable List',
+        href: '/dashboard/advanced-ui/sortable-list'
+      },
+      {
+        id: 45,
+        name: 'Multi Step Form',
+        href: '/dashboard/advanced-ui/multi-step-form'
+      }
+    ]
   },
   {
-    id: 44,
+    id: 49,
     name: 'Help',
     icon: RiQuestionnaireLine,
     href: '/help'

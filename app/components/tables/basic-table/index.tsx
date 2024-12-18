@@ -56,23 +56,40 @@ export const BasicTable = <T,>(props: BasicTableProps<T>) => {
             {table.getHeaderGroups().map((headerGroup) => (
               <tr
                 key={headerGroup.id}
-                className="border-b border-slate-200 text-left text-sm font-semibold text-slate-600"
+                className="text-left text-sm font-semibold text-slate-600"
               >
                 {headerGroup.headers.map((header) => {
+                  const columnRelativeDepth = header.depth - header.column.depth
+
+                  if (
+                    !header.isPlaceholder &&
+                    columnRelativeDepth > 1 &&
+                    header.id === header.column.id
+                  ) {
+                    return null
+                  }
+
+                  let rowSpan = 1
+                  if (header.isPlaceholder) {
+                    const leafs = header.getLeafHeaders()
+                    rowSpan = leafs[leafs.length - 1].depth - header.depth
+                  }
                   return (
                     <th
                       key={header.id}
                       colSpan={header.colSpan}
-                      className="p-4"
+                      rowSpan={rowSpan}
+                      className={twMerge([
+                        'content-end border border-slate-200 p-4',
+                        !header.isPlaceholder && 'text-center'
+                      ])}
                     >
-                      {header.isPlaceholder ? null : (
-                        <div>
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                        </div>
-                      )}
+                      <>
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                      </>
                     </th>
                   )
                 })}
@@ -87,7 +104,7 @@ export const BasicTable = <T,>(props: BasicTableProps<T>) => {
                     <motion.tr
                       key={row.id}
                       className={twMerge([
-                        'border-b border-slate-200 text-sm text-slate-500',
+                        'text-sm text-slate-500',
                         hovered && 'hover:bg-slate-100',
                         stripped && 'odd:bg-slate-100',
                         state?.pagination ? 'last:border-b' : 'last:border-b-0'
@@ -96,7 +113,7 @@ export const BasicTable = <T,>(props: BasicTableProps<T>) => {
                       {row.getVisibleCells().map((cell) => (
                         <td
                           key={cell.id}
-                          className="p-4"
+                          className="border border-slate-200 p-4"
                         >
                           {flexRender(
                             cell.column.columnDef.cell,
@@ -110,23 +127,25 @@ export const BasicTable = <T,>(props: BasicTableProps<T>) => {
                 {showFooter && (
                   <tfoot>
                     {table.getFooterGroups().map((footerGroup) => (
-                      <tr
-                        key={footerGroup.id}
-                        className="border-b border-slate-200 text-left text-sm font-semibold text-slate-500"
-                      >
-                        {footerGroup.headers.map((header) => (
-                          <th
-                            key={header.id}
-                            className="p-4"
-                          >
-                            {header.isPlaceholder
-                              ? null
-                              : flexRender(
-                                  header.column.columnDef.footer,
-                                  header.getContext()
-                                )}
-                          </th>
-                        ))}
+                      <tr key={footerGroup.id}>
+                        {footerGroup.headers.map((header) => {
+                          const isLeaf = header.subHeaders?.length === 0
+
+                          if (!isLeaf) return null
+
+                          return (
+                            <th
+                              key={header.id}
+                              colSpan={header.colSpan}
+                              className="border border-slate-200 p-4 text-sm text-slate-600"
+                            >
+                              {flexRender(
+                                header.column.columnDef.footer,
+                                header.getContext()
+                              )}
+                            </th>
+                          )
+                        })}
                       </tr>
                     ))}
                   </tfoot>
