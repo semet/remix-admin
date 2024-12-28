@@ -10,17 +10,25 @@ export const columns: ColumnDef<Person>[] = [
     cell: (props) => props.getValue()
   },
   {
-    header: 'First Name',
-    footer: 'First Name',
-    accessorKey: 'firstName',
-    cell: (props) => props.getValue()
+    id: 'name__',
+    header: () => 'Name',
+    footer: () => 'Name',
+    columns: [
+      {
+        header: 'First Name',
+        footer: 'First Name',
+        accessorKey: 'firstName',
+        cell: (props) => props.getValue()
+      },
+      {
+        header: 'Last Name',
+        footer: 'Last Name',
+        accessorKey: 'lastName',
+        cell: (props) => props.getValue()
+      }
+    ]
   },
-  {
-    header: 'Last Name',
-    footer: 'Last Name',
-    accessorKey: 'lastName',
-    cell: (props) => props.getValue()
-  },
+
   {
     header: 'Email',
     footer: 'Email',
@@ -29,7 +37,7 @@ export const columns: ColumnDef<Person>[] = [
   },
   {
     header: 'Age',
-    footer: (props) => props.column.id,
+    footer: 'Age',
     accessorKey: 'age',
     cell: (props) => props.getValue()
   },
